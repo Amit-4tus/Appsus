@@ -1,6 +1,6 @@
 'use strict';
 
-import theRouter from './routes.js'
+import theRouter from './main-routes.js'
 
 let root = {
     el: '#root',
