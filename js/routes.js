@@ -1,11 +1,10 @@
 'use strict';
 
 import homePage from './apps/pages/home-page.js';
-import emailApp from './apps/email/email-app.js';
+import emailApp from './apps/pages/email-app.js';
 import keepApp from './apps/keep/keep-app.js';
 
-const myRoutes = [
-    {
+const myRoutes = [{
         path: '/',
         component: homePage,
     },
@@ -23,6 +22,6 @@ const myRoutes = [
     // },
 ];
 
-const myRouter = new VueRouter({routes: myRoutes});
+const myRouter = new VueRouter({ routes: myRoutes });
 
 export default myRouter;
