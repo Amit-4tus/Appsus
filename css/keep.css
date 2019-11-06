@@ -1,0 +1,29 @@
+.label-editing-sceen {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.keep-app {
+    display: flex;
+}
+
+aside {
+    background-color: white;
+}
+
+.labels-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+h3 {
+    margin: 0px;
+}
+
+.fa-trash-alt {
+    color: red;
+}
