@@ -5,7 +5,10 @@ export default returnKeeps;
 var currId = 101;
 
 function returnKeeps() {
-    return keepsStorage;
+    if (!localStorage.getItem('keepsStorage')) {
+        localStorage.setItem('keepsStorage', JSON.stringify(keepsStorage));
+    }
+    return Promise.resolve(JSON.parse(localStorage.getItem('keepsStorage')));
 };
 
 const keepsStorage = [

@@ -1,4 +1,4 @@
-.label-editing-sceen {
+.screen {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -26,4 +26,40 @@ h3 {
 
 .fa-trash-alt {
     color: red;
+}
+
+.adding-btns {
+    position: absolute;
+    z-index: -1;
+    bottom: 5vh;
+    right: 5vh;
+}
+
+.add-keep-btn {
+    border: 2px solid black;
+    border-radius: 100%;
+    background-color: blue;
+    color: white;
+}
+
+.large-btn {
+    width: 7vh;
+    height: 7vh;
+}
+
+.small-btn {
+    width: 5vh;
+    height: 5vh;
+}
+
+.add-txt-keep-btn {
+    position: relative;
+    /* bottom: 26vh;
+    right: 6vh; */
+    border: 2px solid black;
+    border-radius: 100%;
+    width: 5vh;
+    height: 5vh;
+    background-color: blue;
+    color: white;
 }

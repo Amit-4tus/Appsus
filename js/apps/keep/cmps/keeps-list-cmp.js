@@ -2,6 +2,7 @@
 
 import getKeepsFromService from '../sevices/keep-service.js';
 import keep from '../cmps/keep-cmp.js';
+import addingBtns from '../cmps/adding-btns-cmp.js';
 
 export default {
     template: `
@@ -9,6 +10,8 @@ export default {
             <div v-for="keep in keeps">
                 <keep :keepData="keep"></keep>
             </div>
+            
+            <adding-btns></adding-btns>
         </section>
     `,
 
@@ -21,14 +24,17 @@ export default {
     created() {
         this.getKeeps();
     },
-
+    
     methods: {
         getKeeps() {
-            this.keeps = getKeepsFromService();
+            getKeepsFromService().then(res => {
+                this.keeps = res;
+            })
         },
     },
 
     components: {
         keep,
+        addingBtns,
     },
 }

@@ -3,7 +3,7 @@
 export default {
     template: `
         <section class="keep-labels">
-            <aside :class="{'above': isEditingLabels, 'position-relative': isEditingLabels}">
+            <aside :class="{'above': isEditingLabels}">
                 <div class="labels-header">
                     <h3>Labels</h3>
 
@@ -29,7 +29,7 @@ export default {
                 <input v-if="isAddingLabel" type="text" class="new-label" placeholder="New Label" @change="addLabel">
             </aside>
 
-            <div v-if="isEditingLabels" class="label-editing-sceen"></div>
+            <div v-if="isEditingLabels" class="screen label-editing-sceen"></div>
         </section>
     `,
 
