@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 import { storageService } from '../../../../main-services/util-service.js'
 
 
