@@ -11,7 +11,6 @@ function store(key, value) {
     localStorage.setItem(key, json)
 }
 
-
 function makeId(length = 3) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -21,10 +20,18 @@ function makeId(length = 3) {
     return txt;
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
-export const storageService = {
+export const utilService = {
     load,
     store,
-    makeId
-
+    makeId,
+    getRandomColor,
 }

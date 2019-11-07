@@ -1,15 +1,19 @@
 'use strict';
 
+import keepService from '../sevices/keep-service.js';
+import {eventBus} from '../../../main-services/event-bus-service.js';
+import {utilService} from '../../../main-services/util-service.js';
+
 export default {
     props: ['type'],
 
     template: `
         <section class="new-keep">
             <div class="new-keep-creator above">
-                <form>
-                <input type="text" placeholder="Title" required ref="titleInput">
-                <input v-if="isImg || isAudio" type="text" placeholder="File URL" required>
-                <textarea v-if="isTxt" rows="4" cols="50" required></textarea>
+            <form>
+                <input type="text" placeholder="Title" required v-model="keepData.title">
+                <input v-if="isImg || isAudio" type="text" placeholder="File URL" required v-model="keepData.extra">
+                <textarea v-if="isTxt" rows="4" cols="50" required v-model="keepData.extra"></textarea>
                 <input type="submit" value="Submit" @click="addKeep">
             </form>
             </div>
@@ -24,12 +28,18 @@ export default {
             isImg: false,
             isAudio: false,
             isTxt: false,
+            keepData: {
+                title: '',
+                extra: '',
+                color: '',
+                id: currId++,
+            },
         };
     },
 
     created() {
         this.determinType();
-        console.log(this.$refs.titleInput);
+        this.setColor();
             // .$el.focus();
     },
 
@@ -49,13 +59,14 @@ export default {
                     this.isTxt = true
             };
         },
-        addKeep(f) {
-            let keepTitle = f.target.offsetParent.children[0][0];
-            if (this.isTxt) {
-                var keepTxt = f.target.offsetParent.children[0][1];
-            }
-            else var keepUrl = f.target.offsetParent.children[0][1];
-            // console.log(f.target.offsetParent.children);
+        addKeep(ev) {
+            this.keepData.type = this.type;
+            keepService.addKeep({...this.keepData});
+            eventBus.$emit('newKeepMade', {...this.keepData});
+            console.log(this.keepData.id);
+        },
+        setColor() {
+            this.keepData.color = utilService.getRandomColor();
         },
     },
 };
