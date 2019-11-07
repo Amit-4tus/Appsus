@@ -11,7 +11,7 @@ let root = {
         <section>
         <h1>Apsus</h1>
         <nav>
-            <router-link to="/email-app">Email</router-link>
+            <router-link to="/emailApp/email/inbox">Email</router-link>
             <router-link to="/keep-app">Keep</router-link>
             <router-link to="/book-app">Book</router-link>
         </nav>

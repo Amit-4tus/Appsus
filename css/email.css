@@ -12,7 +12,22 @@ a {
     flex-direction: row;
     justify-content: space-between;
     border: 1px solid black;
+    cursor: pointer;
+    padding: 5px;
 }
+
+.bold {
+    font-weight: bold;
+}
+
+
+/* .email li {
+    height: 30px;
+}
+
+.email-body{
+
+} */
 
 .email-main-container {
     display: flex;
@@ -38,20 +53,45 @@ a {
 .addNewEmail {
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    width: 75vw;
 }
 
 .sendEmailBtn {
     z-index: 100;
 }
 
-textarea {
+
+/* textarea {
     z-index: -10;
-}
+} */
 
 .newMessage {
     background-color: #202124;
     color: white;
     height: 20px;
     padding: 5px;
+}
+
+.email-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.emailSubject {
+    display: flex;
+    justify-content: space-between;
+}
+
+.asaid-nav-bar {
+    display: flex;
+    flex-direction: column;
+}
+
+.router-email {
+    width: 70%;
 }

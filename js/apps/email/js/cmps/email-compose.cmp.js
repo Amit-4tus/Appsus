@@ -1,17 +1,19 @@
+import { emailService } from '../services/email-service.js'
+
 export default {
+
     template: `
     <section class="container book-filter-container">
-    <form class="addNewEmail" @submit.prevent="onFilter">
+    <form class="addNewEmail">
     <label class="newMessage">New Message</label>
-        <input type="text" placeholder="To" v-model="newEmail.name" />
-        <input type="text" placeholder="Cc" v-model="newEmail.name" />    
-        <input type="text" placeholder="Bcc" v-model="newEmail.name" />
+        <input type="text" placeholder="To" v-model="newEmail.email" />
+        <input type="text" placeholder="Cc"  />    
+        <input type="text" placeholder="Bcc"  />
         <input type="text" placeholder="Subject" v-model="newEmail.Subject"/>
-        <textarea class="emailBody" type="text" rows="20" v-model="newEmail.text">
-
-        <button class="sendEmailBtn">Send</button>
+        <textarea class="emailBody" rows="20" v-model="newEmail.text">
         </textarea>
-       
+        <button @click="sendEmail" class="sendEmailBtn">Send</button>
+        
       
         </form>
     </section>
@@ -23,19 +25,15 @@ export default {
                 email: '',
                 Subject: '',
                 text: '',
-
             },
 
         }
     },
     methods: {
-
-        // getAllBooks() {
-        //     this.filterBy.name = '';
-        //     this.filterBy.fromPrice = null;
-        //     this.filterBy.toPrice = null;
-        //     this.$emit('filtered', this.filterBy)
-        // },
+        sendEmail() {
+            console.log(this.newEmail);
+            emailService.sendMail(this.newEmail.name, this.newEmail.email, this.newEmail.subject, this.newEmail.text)
+        }
     }
 
 }

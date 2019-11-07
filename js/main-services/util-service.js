@@ -22,7 +22,7 @@ function makeId(length = 3) {
 }
 
 
-export const storageService = {
+export const utilsService = {
     load,
     store,
     makeId
