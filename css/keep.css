@@ -1,4 +1,4 @@
-.label-editing-sceen {
+.screen {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -9,6 +9,14 @@
 
 .keep-app {
     display: flex;
+}
+
+.keep {
+    border-radius: 10px;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    margin: 10px;
 }
 
 aside {
@@ -24,6 +32,46 @@ h3 {
     margin: 0px;
 }
 
-.fa-trash-alt {
-    color: red;
+.keeps-list {
+    display: grid;
+}
+
+.CRUDIcon {
+    /* float: right; */
+}
+
+.adding-btns {
+    position: fixed;
+    z-index: 1;
+    bottom: 5vh;
+    right: 5vh;
+}
+
+.add-keep-btn {
+    border: 2px solid black;
+    border-radius: 100%;
+    background-color: blue;
+    color: white;
+}
+
+.large-btn {
+    width: 7vh;
+    height: 7vh;
+}
+
+.small-btn {
+    width: 5vh;
+    height: 5vh;
+}
+
+.add-txt-keep-btn {
+    position: relative;
+    /* bottom: 26vh;
+    right: 6vh; */
+    border: 2px solid black;
+    border-radius: 100%;
+    width: 5vh;
+    height: 5vh;
+    background-color: blue;
+    color: white;
 }

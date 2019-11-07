@@ -1,13 +1,13 @@
 'use strict';
 
-import getKeepsFromService from '../sevices/keep-service.js';
+import keepService from '../sevices/keep-service.js';
 import keep from '../cmps/keep-cmp.js';
 
 export default {
     template: `
-        <section class="memo-list">
+        <section class="keeps-list">
             <div v-for="keep in keeps">
-                <keep :keepData="keep"></keep>
+                <keep class="keep clickable" :keepData="keep"></keep>
             </div>
         </section>
     `,
@@ -20,11 +20,15 @@ export default {
 
     created() {
         this.getKeeps();
+        eventBus.$on('newKeepMade', this.getKeeps);
+        eventBus.$on('keepDeleted', this.getKeeps);
     },
-
+    
     methods: {
         getKeeps() {
-            this.keeps = getKeepsFromService();
+            keepService.getKeeps().then(res => {
+                this.keeps = res;
+            });
         },
     },
 

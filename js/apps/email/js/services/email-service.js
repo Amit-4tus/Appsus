@@ -1,5 +1,5 @@
 'use strict';
-import { utilsService } from '../../../../main-services/util-service.js'
+import { utilService } from '../../../../main-services/util-service.js'
 
 
 

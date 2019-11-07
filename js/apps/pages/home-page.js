@@ -3,7 +3,7 @@
 export default {
     template: `
         <section>
-            hello
+            Welcome to Appsus by Artyom Pogosov and Amit Fortus
         </section>
     `,
 };
