@@ -39,7 +39,7 @@ const gKeeps = [
         title: 'Mountain',
         id: currId++,
         type: 'image',
-        extra: 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj_8YPSy9XlAhXSDewKHZoHDH8QjRx6BAgBEAQ&url=https%3A%2F%2Fwww.tentree.com%2Fblog%2F10-reasons-why-climbing-mountains-can-enrich-your-life%2F&psig=AOvVaw28YyNCNO9kz2Ef9p8X2BFZ&ust=1573129865716276',
+        extra: 'https://cdn.shopify.com/s/files/1/2341/3995/files/charlotte-karlsen-768256-unsplash_2048x2048.jpg?v=1547581682',
         color: '#B89747',
     },
     {

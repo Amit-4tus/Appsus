@@ -36,7 +36,7 @@ const myRoutes = [{
         path: '/keep-app',
         component: keepApp,
         children: [{
-                path: 'edit',
+                path: 'edit/:id',
                 component: keepEditCmp,
             },
             {
