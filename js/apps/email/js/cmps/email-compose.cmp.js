@@ -1,7 +1,6 @@
 import { emailService } from '../services/email-service.js'
 
 export default {
-
     template: `
     <section class="container book-filter-container">
     <form class="addNewEmail">
@@ -22,7 +21,6 @@ export default {
         return {
             newEmail: {
                 name: '',
-                email: '',
                 Subject: '',
                 text: '',
             },
@@ -32,7 +30,8 @@ export default {
     methods: {
         sendEmail() {
             console.log(this.newEmail);
-            emailService.sendMail(this.newEmail.name, this.newEmail.email, this.newEmail.subject, this.newEmail.text)
+            emailService.sendMail(this.newEmail.email, this.newEmail.subject, this.newEmail.text)
+            this.$router.go(-1)
         }
     }
 

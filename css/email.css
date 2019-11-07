@@ -56,8 +56,16 @@ a {
     width: 75vw;
 }
 
+.symbol-color {
+    color: #202124;
+}
+
 .sendEmailBtn {
     z-index: 100;
+}
+
+.starfill {
+    color: rgb(158, 158, 17);
 }
 
 
@@ -90,6 +98,7 @@ a {
 .asaid-nav-bar {
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .router-email {

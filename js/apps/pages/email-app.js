@@ -16,11 +16,23 @@ export default {
        
    <nav class="email-nav">
    <div class="asaid-nav-bar">
-       <router-link to="/emailApp/compose"><button class="compose">+Compose</button></router-link>
-        <router-link to="/emailApp/email/inbox">inbox</router-link>
-        <router-link to="/emailApp/email/starred">starred</router-link>
-        <router-link to="/emailApp/email/SendMail">Send Mail</router-link>
-        <router-link to="/emailApp/email/Drafts">Drafts</router-link>
+       <router-link to="/emailApp/compose"><button class="compose"
+       >+Compose</button></router-link>
+        <router-link to="/emailApp/email/inbox">
+        <i class="fas fa-inbox symbol-color"></i>
+        inbox</router-link>
+        <router-link to="/emailApp/email/starred">
+        <i  class="fas fa-star symbol-color"></i>
+        starred</router-link>
+        <router-link to="/emailApp/email/SendMail">
+        <i class="fas fa-paper-plane symbol-color"></i>
+        Send Mail</router-link>
+        <router-link to="/emailApp/email/Drafts">
+        <i class="fab fa-firstdraft symbol-color"></i>
+        Drafts</router-link>
+        <router-link to="/emailApp/email/Drafts">
+        <i class="fas fa-trash symbol-color"></i>
+        Trash</router-link>
          </div>
           <!-- <router-link to="email-app/email-details"><i class="fas fa-arrows-alt"></i>
          </router-link> -->

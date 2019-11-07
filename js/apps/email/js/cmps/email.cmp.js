@@ -23,15 +23,14 @@ export default {
     },
     created() {
         this.emails = emailService.getEmails()
+        this.emailsForShow = emailService.getEmails()
     },
     methods: {
         setFilter(filterBy) {
             console.log('Parent got filter:', filterBy);
             console.log(this.emails[1].isRead);
-
             this.filterBy = filterBy
         },
-
     },
     computed: {
         // showAllBooks(booksShown) {
@@ -43,47 +42,43 @@ export default {
             let readOrUnread;
             let regex = new RegExp(`${this.filterBy.text}`, 'i');
 
-            return this.emails.filter((email) => {
-                if (this.filterBy.isRead === 'true') readOrUnread = true;
-                else if (this.filterBy.isRead === 'false') readOrUnread = false;
-                (regex.test(email.name) || regex.test(email.text) || regex.test(email.subject)) &&
-                this.emails.isRead === readOrUnread
-                    // dog.name.toLowerCase().includes(this.filterBy.name.toLowerCase()) && dog.weight >= this.filterBy.minWeight
-                    // && book.listPrice.amount >= this.filterBy.fromPrice && book.listPrice.amount >= this.filterBy.toPrice
+            return this.emails.filter(email =>
+                // if (this.filterBy.isRead === 'true') readOrUnread = true;
+                // else if (this.filterBy.isRead === 'false') readOrUnread = false;
+                (regex.test(email.name) || regex.test(email.text) || regex.test(email.subject))
+                // this.emails.isRead === readOrUnread
+                // dog.name.toLowerCase().includes(this.filterBy.name.toLowerCase()) && dog.weight >= this.filterBy.minWeight
+                // && book.listPrice.amount >= this.filterBy.fromPrice && book.listPrice.amount >= this.filterBy.toPrice
 
-            })
-        }
+            )
+        },
     },
     watch: {
-        // let typePage = this.$route.params.type;
         '$route.params.type' () {
-            console.log('gotem', this.$route.params.type);
-            console.log(this.emails);
+            this.emails = emailService.getEmails()
+            let typePage = this.$route.params.type;
+            let email;
+            if (typePage === 'starred') {
+                email = this.emails.filter(email => email.isStarred === true)
+                this.emails = email;
+            } else if (typePage === 'SendMail') {
+                email = this.emails.filter(email => email.isSendMail === true)
+                this.emails = email;
+            } else if (typePage === 'Drafts') {
+                email = this.emails.filter(email => email.isDraft === true)
+                this.emails = email;
+            } else {
+                email = this.emails.filter(email =>
+                    email.isDraft === false
+                )
 
-            if (this.$route.params.type === 'inbox') {
-                let inboxEmails = this.emails.filter((email) => {
-                    email.isSendMail === false
-                        // && email.isDraft === false
-
-                })
-                console.log(inboxEmails);
-                this.emailsForShow = inboxEmails;
-            } else if (this.$route.params.type === 'starred') {
-                let starredEmails = this.emails.filter(email => email.isStarred === true)
-                console.log(starredEmails);
-                console.log(this.emailsForShow);
-                this.emailsForShow = starredEmails;
-                console.log(this.emailsForShow);
-            } else if (this.$route.params.type === 'SendMail') {
-                let SendEmails = this.emails.filter(email => email.isSendMail === true)
-                console.log(SendEmails);
-                this.emailsForShow = SendEmails;
-            } else if (this.$route.params.type === 'Drafts') {
-                let draftEmails = this.emails.filter(email => email.isDraft === true)
-                this.emailsForShow = draftEmails;
             }
+            //     this.emails = email;
+            // }
+            console.log(email);
         }
     },
+
 
     components: {
         emailFilter,
