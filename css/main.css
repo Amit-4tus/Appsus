@@ -1,6 +1,18 @@
 @import "helpers.css";
 @import "keep.css";
-
 body {
     margin: 0 auto;
+}
+
+img.d-block {
+    height: 550px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(209, 209, 106);
+    border-bottom: 2px black solid;
 }

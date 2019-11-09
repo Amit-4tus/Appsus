@@ -32,6 +32,10 @@ export default {
     },
     created() {
         this.emails = emailService.getEmails()
+        let email = this.emails.filter(email =>
+            email.isDraft !== true)
+        this.emails = email;
+
         this.emailsForShow = emailService.getEmails()
 
 
@@ -60,9 +64,12 @@ export default {
     },
     watch: {
         '$route.params.type' () {
+            // debugger
             this.emails = emailService.getEmails()
             console.log(this.emails);
             let typePage = this.$route.params.type;
+            console.log(typePage);
+
             let email;
             if (typePage === 'Trash') this.emails = emailService.getTrashEmails()
             if (typePage === 'starred') {
@@ -79,16 +86,16 @@ export default {
                 this.emails = email;
             } else if (typePage === 'inbox') {
                 email = this.emails.filter(email =>
-                    email.isDraft === false)
+                    email.isDraft !== true)
                 this.emails = email;
             }
             console.log(email);
-        }
-    },
-    watch: {
+        },
         sortBy() {
             if (this.sortBy === 'title') this.emails.sort((a, b) => (a.email.subject > b.email.subject) ? 1 : -1)
-            if (this.sortBy === 'time') this.emails.sort((a, b) => (a.email.sentAt > b.email.sentAt) ? 1 : -1)
+            else if (this.sortBy === 'time') this.emails.sort((a, b) => (a.email.sentAt > b.email.sentAt) ? 1 : -1)
+            else this.emails = emailService.getEmails()
+
         }
     },
 

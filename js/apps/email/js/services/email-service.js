@@ -83,13 +83,13 @@ function sendMail(email, subject, text, isDraft) {
 
 
 
-function getNextEmailId(emailId) {
-    var idx = gEmail.findIndex(email => email.id === emailId);
-    idx++;
-    if (idx === gEmail.length) idx = 0;
+// function getNextEmailId(emailId) {
+//     var idx = gEmail.findIndex(email => email.id === emailId);
+//     idx++;
+//     if (idx === gEmail.length) idx = 0;
 
-    return gEmail[idx].id;
-}
+//     return gEmail[idx].id;
+// }
 
 function _timeAtSend() {
     let timeAt = '' + new Date();
@@ -119,18 +119,18 @@ function createEmails() {
     gEmail = utilService.load(STORAGE_KEY_EMAILS)
     if (!gEmail || gEmail.length === 0) {
         gEmail = [
-            _createEmail(utilService.makeId(), 'avi', 'avi@gmail.com', '[Draft] Wassap with Vue?', '17:24', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
-            _createEmail(utilService.makeId(), 'koki', 'koki@gmail.com', 'hi', '17:04', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
-            _createEmail(utilService.makeId(), 'bobi', 'bobi@gmail.com', 'hola', '16:54', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
-            _createEmail(utilService.makeId(), 'momi', 'momi@gmail.com', 'bey', '16:44', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, true, false, false),
-            _createEmail(utilService.makeId(), 'yomi', 'yomi@gmail.com', 'hello', '16:14', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
-            _createEmail(utilService.makeId(), 'tomi', 'tomi@gmail.com', 'yoyo', '16:12', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
-            _createEmail(utilService.makeId(), 'avi', 'avi@gmail.com', 'Wassap with Vue?', '15:01', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
-            _createEmail(utilService.makeId(), 'koki', 'koki@gmail.com', '[Draft] hi', '13:34', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
-            _createEmail(utilService.makeId(), 'bobi', 'bobi@gmail.com', 'hola', '12:09', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, false, true, false, false),
-            _createEmail(utilService.makeId(), 'momi', 'momi@gmail.com', '[Draft] bey', '10:55', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
-            _createEmail(utilService.makeId(), 'yomi', 'yomi@gmail.com', 'hello', '07:00', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
-            _createEmail(utilService.makeId(), 'tomi', 'tomi@gmail.com', 'yoyo', '00:29', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false)
+            _createEmail(utilService.makeId(), 'avi', 'avi@gmail.com', '[Draft] Wassap with Vue?', 1573298869482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
+            _createEmail(utilService.makeId(), 'koki', 'koki@gmail.com', 'hi', 1573298869182, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
+            _createEmail(utilService.makeId(), 'bobi', 'bobi@gmail.com', 'hola', 1573298829482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
+            _createEmail(utilService.makeId(), 'momi', 'momi@gmail.com', 'bey', 1573298863482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, true, false, false),
+            _createEmail(utilService.makeId(), 'yomi', 'yomi@gmail.com', 'hello', 1573298369482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
+            _createEmail(utilService.makeId(), 'tomi', 'tomi@gmail.com', 'yoyo', 1573298269582, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
+            _createEmail(utilService.makeId(), 'avi', 'avi@gmail.com', 'Wassap with Vue?', 1573298829482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
+            _createEmail(utilService.makeId(), 'koki', 'koki@gmail.com', '[Draft] hi', 1573298863482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
+            _createEmail(utilService.makeId(), 'bobi', 'bobi@gmail.com', 'hola', 1573298862482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, false, true, false, false),
+            _createEmail(utilService.makeId(), 'momi', 'momi@gmail.com', '[Draft] bey', 1573298369482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
+            _createEmail(utilService.makeId(), 'yomi', 'yomi@gmail.com', 'hello', 1573298849482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
+            _createEmail(utilService.makeId(), 'tomi', 'tomi@gmail.com', 'yoyo', 1573298569482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false)
 
         ]
         utilService.store(STORAGE_KEY_EMAILS, gEmail)

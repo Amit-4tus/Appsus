@@ -12,9 +12,11 @@ export default {
                <input type="text" placeholder="Subject" v-model="newEmail.title"/>
                <span>
                <textarea class="emailBody" rows="20" v-model="newEmail.text"> </textarea> 
+               <router-link to="/emailApp/email/inbox">
                <button @click="sendEmail(false)" class="sendEmailBtn">Send</button>
-               <i @click="sendEmail(true)" class="fab fa-firstdraft draftIcon"></i>
-               <i @click="deleteCompose" class="fas fa-trash-alt deleteCompose"></i>
+               <i @click="sendEmail(true)" title="Draft" class="fab fa-firstdraft draftIcon"></i>
+               <i @click="deleteCompose" title="Delete" class="fas fa-trash-alt deleteCompose"></i>
+               </router-link>
 </span>
                
              
@@ -34,20 +36,19 @@ export default {
     methods: {
         sendEmail(isDraft) {
             if (isDraft) this.newEmail.title = '[Draft]' + this.newEmail.title
-            emailService.sendMail(this.newEmail.email, this.newEmail.title, this.newEmail.text, true)
-            this.$router.go(-1)
+            emailService.sendMail(this.newEmail.email, this.newEmail.title, this.newEmail.text, isDraft)
+
         },
         deleteCompose() {
             this.newEmail.email = '';
             this.newEmail.title = '';
             this.newEmail.text = '';
-            this.$router.go(-1)
+
         },
     },
     created() {
 
         eventBus.$on('subject', (subject) => {
-            console.log('UserMsg got new Msg!');
             this.newEmail.title = subject.title;
             this.newEmail.email = subject.emailTo
         })

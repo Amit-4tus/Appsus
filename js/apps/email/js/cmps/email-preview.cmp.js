@@ -12,7 +12,7 @@ export default {
                   <li class="emailSubject"> 
                        <span class="email-title">{{email.subject}} 
                        </span>  - {{email.text.substring(0,25)+"..."}}</li>
-                   <li class="emailSentAt">  {{email.sentAt}}
+                   <li class="emailSentAt">  {{getCurrTime(email.sentAt)}}
                        <span @click.stop="changeStarred(email)">
                             <i v-if="email.isStarred" class="fas fa-star starfill"></i>
                             <i v-if="!email.isStarred" class="far fa-star"></i>
@@ -22,21 +22,21 @@ export default {
              <ul v-if="isReadEmail" class="email-body" >
                    <li class="emailSubject"> {{email.subject}} 
                       <span class="subjectsIcons">
-                      <router-link :email="email" @click.native="replyEmail" class="bcgColorIcon" to="/emailApp/compose">
-                          <span  class="bcgColorIcon"><i class="fas fa-reply"></i> 
+                      <router-link :email="email" title="Reply" @click.native="replyEmail" class="bcgColorIcon" to="/emailApp/compose">
+                          <span  class="bcgColorIcon"><i  class="fas fa-reply"></i> 
                           
                         </span>
                         </router-link>
-                         <router-link :email="email"  class="bcgColorIcon" :to="emailUrl">
+                         <router-link :email="email" title="Open"  class="bcgColorIcon" :to="emailUrl">
                              <i @click="showEmail(email)" class="fas fa-arrows-alt"></i>
                           </router-link>
                                 <span @click="makeUnread" class="bcgColorIcon" >
-                                <i v-if="email.isRead" class="fas fa-envelope-open-text"></i>
+                                <i v-if="email.isRead" title="Unread" class="fas fa-envelope-open-text"></i>
                                 <i v-if="!email.isRead" class="fas fa-envelope"></i>
                                 </span>
                           <span class="bcgColorIcon">
-                            <i v-if="!email.isTrash" @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt"></i>
-                            <i v-if="email.isTrash" @click ="deleteOrAddEmail('add')" class="fas fa-trash-restore"></i>
+                            <i v-if="!email.isTrash" title="Delete" @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt"></i>
+                            <i v-if="email.isTrash" title="Restore" @click ="deleteOrAddEmail('add')" class="fas fa-trash-restore"></i>
                           </span>
                       </span>
                     </li>
@@ -50,13 +50,14 @@ export default {
             isReadEmail: false,
             currEmail: null,
             emailId: null,
-            emailChange: ''
+            emailChange: '',
         }
     },
     methods: {
         readEmail() {
             this.isReadEmail = !this.isReadEmail;
             this.currEmail.isRead = false
+                // setTimeout()
             emailService.changeEmailParameter(this.currEmail, 'isRead');
         },
         showEmail() {
@@ -95,19 +96,28 @@ export default {
                 title: `Re: ${this.email.subject}`,
                 emailTo: this.email.email
             };
-            console.log(subject);
-
             eventBus.$emit('subject', subject);
+        },
+        getCurrTime(sentAt) {
+            let tempTime = new Date(sentAt) + '';
+            let date = tempTime.substring(3, 10)
+            console.log(tempTime);
+
+            return tempTime.substring(16, 21) + date
+
+
         }
     },
     created() {
-        this.currEmail = this.email
+        this.currEmail = this.email;
+
     },
     computed: {
         emailUrl() {
             this.emailId = this.email.id
             return '/emailApp/email/details/' + this.email.id
-        }
+        },
+
     },
     components: {
         emailDetails,

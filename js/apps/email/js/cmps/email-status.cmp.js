@@ -16,5 +16,8 @@ export default {
 
     created() {
         this.readPrecent = emailService.getReadPrecent();
-    }
+    },
+    // watch: {
+    //     this.readPrecent = emailService.getReadPrecent();
+    // }
 }
