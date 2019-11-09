@@ -89,3 +89,13 @@ h3 {
 img {
     width: 155px;
 }
+
+audio {
+    width: 156px;
+    height: 30px;
+}
+
+video {
+    width: 156px;
+    height: 100px;
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-export default {getKeeps, addKeep, deleteKeep};
+export default {getKeeps, addKeep, deleteKeep, updateKeep, getAllLabels};
 
 window.currId = 101;
 
@@ -11,7 +11,6 @@ function getKeeps() {
     }
     currId = localStorage.getItem('KeepsCurrId');
     return Promise.resolve(JSON.parse(localStorage.getItem('gKeeps')));
-    
 };
 
 function addKeep(newKeepData) {
@@ -28,12 +27,27 @@ function deleteKeep(id) {
     localStorage.setItem('gKeeps', JSON.stringify(keeps));
 };
 
+function updateKeep(updtdKeepData) {
+    let keeps = JSON.parse(localStorage.getItem('gKeeps'));
+    let idx = keeps.findIndex(keep => keep.id === +updtdKeepData.id);
+    keeps.splice(idx, 1, updtdKeepData);
+    localStorage.setItem('gKeeps', JSON.stringify(keeps));
+};
+
+function getAllLabels() {
+    if (!localStorage.getItem('gKeepLabels')) localStorage.setItem('gKeepLabels', JSON.stringify(gLabels));
+    return JSON.parse(localStorage.getItem('gKeepLabels'));
+};
+
+const gLabels = ['personal', 'work'];
+
 const gKeeps = [
     {
         title: 'Do Laundry',
         id: currId++,
         type: 'task',
         color: '#EEF26C',
+        labels: ['personal'],
     },
     {
         title: 'Mountain',
@@ -41,12 +55,22 @@ const gKeeps = [
         type: 'image',
         extra: 'https://cdn.shopify.com/s/files/1/2341/3995/files/charlotte-karlsen-768256-unsplash_2048x2048.jpg?v=1547581682',
         color: '#B89747',
+        labels: ['personal'],
     },
     {
         title: 'New Song Idea',
         id: currId++,
         type: 'audio',
-        extra: 'https://drive.google.com/open?id=16bSLZJviEwTXkfSiPe_pnPZ5mnr29bAa',
+        extra: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         color: '#FE7F34',
+        labels: ['work'],
+    },
+    {
+        title: 'Bunny Rsbbit',
+        id: currId++,
+        type: 'video',
+        extra: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+        color: '#96A90E',
+        labels: [],
     },
 ];

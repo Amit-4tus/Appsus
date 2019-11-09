@@ -12,7 +12,8 @@ export default {
             <div class="new-keep-creator above">
             <form>
                 <input type="text" placeholder="Title" required v-model="keepData.title">
-                <input v-if="isImg || isAudio" type="text" placeholder="File URL" required v-model="keepData.extra">
+                <input v-if="isList" type="text" placeholder="Enter a comma (,) separated  list" required v-model="keepData.extra">
+                <input v-if="isImg || isAudio || isVideo" type="text" placeholder="File URL" required v-model="keepData.extra">
                 <textarea v-if="isTxt" rows="4" cols="50" required v-model="keepData.extra"></textarea>
                 <input type="submit" value="Submit" @click="addKeep">
             </form>
@@ -25,9 +26,11 @@ export default {
     data() {
         return {
             isTask: false,
+            isVideo: false,
             isImg: false,
             isAudio: false,
             isTxt: false,
+            isList: false,
             keepData: {
                 title: '',
                 extra: '',
@@ -49,21 +52,26 @@ export default {
                 case 'task':
                     this.isTask = true
                     return;
-                case 'img':
+                case 'image':
                     this.isImg = true
                     return;
                 case 'audio':
                     this.isAudio = true
                     return;
-                case 'txt':
+                case 'text':
                     this.isTxt = true
+                    return;
+                case 'video':
+                    this.isVideo = true
+                    return;
+                case 'video':
+                    this.isList = true
             };
         },
         addKeep(ev) {
             this.keepData.type = this.type;
             keepService.addKeep({...this.keepData});
             eventBus.$emit('newKeepMade', {...this.keepData});
-            console.log(this.keepData.id);
         },
         setColor() {
             this.keepData.color = utilService.getRandomColor();

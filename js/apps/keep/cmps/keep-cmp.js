@@ -10,8 +10,13 @@ export default {
             
             <img v-if="hasBeenClicked && keepData.type === 'image'" :src="keepData.extra">
             
-            <!-- left here -->
-            <!-- <audio src="./audio/New"></audio> -->
+            <audio controls v-if="hasBeenClicked && keepData.type === 'audio'">
+                <source :src="keepData.extra"/>
+            </audio>
+
+            <video v-if="hasBeenClicked && keepData.type === 'video'" width="320" height="240" controls>
+                <source :src="keepData.extra" type="video/mp4">
+            </video>
 
             <div v-if="hasBeenClicked" class="CRUDIcons">
                 <router-link :to="getEditCmpUrl">
@@ -32,6 +37,9 @@ export default {
     computed: {
         getEditCmpUrl() {
             return `edit/${this.keepData.id}`;
+        },
+        getAudioURL() {
+            URL.createObjectURL('../audio/New Song Idea')
         },
     },
 };
