@@ -5,6 +5,7 @@ import theRouter from '../../main-routes.js'
 import emailList from '../email/js/cmps/email-list.cmp.js';
 import emailCompose from '../email/js/cmps/email-compose.cmp.js';
 import emailDetails from '../email/js/cmps/email-details.cmp.js';
+import emailStatus from '../email/js/cmps/email-status.cmp.js';
 
 
 
@@ -16,24 +17,25 @@ export default {
        
    <nav class="email-nav">
    <div class="asaid-nav-bar">
-       <router-link to="/emailApp/compose"><button class="compose"
-       >+Compose</button></router-link>
-        <router-link to="/emailApp/email/inbox">
-        <i class="fas fa-inbox symbol-color"></i>
+       <router-link to="/emailApp/compose"><button class="compose">
+       <i class="fas fa-plus plus"></i>  Compose</button></router-link>
+        <router-link class="saidLinks" to="/emailApp/email/inbox">
+        <i class="fas fa-inbox iconLinks"></i>
         inbox</router-link>
-        <router-link to="/emailApp/email/starred">
-        <i  class="fas fa-star symbol-color"></i>
+        <router-link class="saidLinks" to="/emailApp/email/starred">
+        <i  class="fas fa-star iconLinks"></i>
         starred</router-link>
-        <router-link to="/emailApp/email/SendMail">
-        <i class="fas fa-paper-plane symbol-color"></i>
+        <router-link class="saidLinks" to="/emailApp/email/SendMail">
+        <i class="fas fa-paper-plane iconLinks"></i>
         Send Mail</router-link>
-        <router-link to="/emailApp/email/Drafts">
-        <i class="fab fa-firstdraft symbol-color"></i>
+        <router-link class="saidLinks" to="/emailApp/email/Drafts">
+        <i class="fab fa-firstdraft iconLinks"></i>
         Drafts</router-link>
-        <router-link to="/emailApp/email/Drafts">
-        <i class="fas fa-trash symbol-color"></i>
+        <router-link class="saidLinks" to="/emailApp/email/Trash">
+        <i class="fas fa-trash iconLinks"></i>
         Trash</router-link>
          </div>
+         <email-status></email-status>
           <!-- <router-link to="email-app/email-details"><i class="fas fa-arrows-alt"></i>
          </router-link> -->
       </nav>
@@ -46,12 +48,6 @@ export default {
     `,
 
     methods: {
-        // getNewMail() {
-        //     this.isCompose = !this.isCompose
-        // },
-        // setFilter(filterBy) {
-
-        // },
 
     },
     computed: {
@@ -77,7 +73,8 @@ export default {
     components: {
         emailList,
         emailCompose,
-        emailDetails
+        emailDetails,
+        emailStatus
 
     }
 }

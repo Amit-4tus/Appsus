@@ -5,18 +5,25 @@ import { emailService } from '../services/email-service.js'
 export default {
     template: `
     <section>
-    <ul  v-if="email" class="email-body" >
-    <li class="emailSubject"> {{email.subject}}  </li>
-    <li class="emailName"> {{email.name}}    <{{email.email}}></li>
-    <li v-if="email" class="emailSubject">{{email.text}}</li>
-     </ul>
-     <router-link class="Next Email" :to="'/emailApp/email/details/' + nextEmailId">NEXT EMAIL &gt; </router-link>
-</section>
+        <ul  v-if="email" class="email-body" >
+            <li class="emailSubject"> {{email.subject}}  </li>
+            <li class="emailName"><pre> {{email.name}}      <{{email.email}}></pre></li>
+            <li v-if="email" class="emailSubject">{{email.text}}</li>
+        </ul>
+        <div>
+            <i  @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt">
+            <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next"></router-link>
+            </i>
+            <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.prev"><i class="fas fa-arrow-alt-circle-left nextPrevIcon"></i></router-link>
+            <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next"><i class="fas fa-arrow-alt-circle-right nextPrevIcon"></i></router-link>
+        </div>
+    </section>
      `,
     data() {
         return {
             email: null,
-            nextEmailId: ''
+            nextEmailId: '',
+            nextPrevEmailsEmail: ''
         }
     },
     created() {
@@ -28,9 +35,14 @@ export default {
             emailService.getEmailById(emailId)
                 .then((currEmail) => {
                     this.email = currEmail;
-                    this.nextEmailId = emailService.getNextEmailId(currEmail.id);
+                    this.nextPrevEmailsEmail = emailService.getNextPrevEmail(currEmail.id);
                 })
-        }
+        },
+        deleteOrAddEmail(removeOrAdd) {
+            this.currEmail = this.email;
+            emailService.getRemoveOrAdd(this.currEmail, removeOrAdd)
+            this.$router.go(-1)
+        },
     },
 
     watch: {
@@ -39,5 +51,4 @@ export default {
             this.loadEmail();
         }
     }
-
 }

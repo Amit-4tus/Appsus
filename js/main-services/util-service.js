@@ -11,7 +11,7 @@ function store(key, value) {
     localStorage.setItem(key, json)
 }
 
-function makeId(length = 3) {
+function makeId(length = 4) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     for (var i = 0; i < length; i++) {

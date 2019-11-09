@@ -11,13 +11,26 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 1px solid black;
+    border: 0.5px solid rgb(161, 159, 159);
+    border-bottom: none;
     cursor: pointer;
     padding: 5px;
 }
 
-.bold {
+.email:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.email-body {
+    border: 0.5px solid rgb(161, 159, 159);
+    border-bottom: none;
+    padding: 10px;
+    padding-top: 0;
+}
+
+.unreadStyle {
     font-weight: bold;
+    background-color: rgb(224, 221, 221);
 }
 
 
@@ -32,12 +45,14 @@ a {
 .email-main-container {
     display: flex;
     flex-direction: row;
+    border-top: black solid 1px;
+    padding-top: 10px;
 }
 
 .email-nav {
-    width: 20%;
-    border: 1px solid black;
-    height: 75vh;
+    width: 25%;
+    /* border: 1px solid black; */
+    height: 85vh;
 }
 
 .email-list {
@@ -47,17 +62,34 @@ a {
 }
 
 .compose {
-    border-radius: 10%;
+    border-radius: 20px;
+    font-size: 22px;
+    padding: 10px;
+    border: 1px solid rgb(216, 215, 215);
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    outline: none;
+}
+
+.compose:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.plus {
+    color: rgb(216, 195, 8);
 }
 
 .addNewEmail {
     display: flex;
     flex-direction: column;
-    width: 75vw;
+    width: 85%;
 }
 
-.symbol-color {
+.iconLinks {
     color: #202124;
+    padding-left: 10px;
+    margin-top: 12px;
 }
 
 .sendEmailBtn {
@@ -90,17 +122,170 @@ a {
     flex-direction: column;
 }
 
+.deleteCompose {
+    position: relative;
+    left: 60px;
+    bottom: 40px;
+    display: inline-block;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.emailBody {
+    width: 99.7%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.sendEmailBtn {
+    position: relative;
+    height: 30px;
+    width: 70px;
+    left: 18px;
+    bottom: 46px;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    background-color: #1a73e8;
+    border: none;
+    font-weight: bold;
+    outline: none;
+}
+
+.draftIcon {
+    position: relative;
+    bottom: 40px;
+    display: inline-block;
+    font-size: 25px;
+    cursor: pointer;
+    left: 55px;
+}
+
+.email-title {
+    font-size: 22px;
+    text-align: center;
+}
+
+.subjectsIcons {
+    display: flex;
+    flex-direction: row;
+}
+
+.subjectsIcons {
+    margin-right: 5px;
+}
+
+.listFilter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    margin-left: 41px;
+    margin-top: 10px;
+}
+
+.search {
+    height: 20px;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(224, 224, 224);
+}
+
 .emailSubject {
     display: flex;
     justify-content: space-between;
+    padding-top: 10px;
 }
 
 .asaid-nav-bar {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: center;
+    height: 70%;
+    padding: 15px;
+    font-size: 20px;
+    width: 95%;
+    margin-top: 35px;
+}
+
+.saidLinks {
+    width: 100%;
+    /* background-color: green; */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 45px;
+}
+
+.fa-envelope-open-text {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.saidLinks:hover {
+    background-color: #d5d6d6;
+}
+
+.saidLinks:active {
+    background-color: rgba(226, 126, 126, 0.5);
 }
 
 .router-email {
     width: 70%;
+    margin: 0 auto;
+}
+
+.statusRead {
+    width: 100px;
+    border: 2px black solid;
+    margin: 0 20px auto;
+    background-color: rgb(199, 195, 195);
+}
+
+.statusRead div {
+    height: 13px;
+    padding: 2px;
+    font-size: 13px;
+    border-right: none;
+    background-color: rgb(216, 195, 8);
+}
+
+.bcgColorIcon {
+    background-color: rgb(199, 195, 195);
+    border-radius: 50px;
+    padding: 5px;
+    cursor: pointer;
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.nextPrevIcon {
+    font-size: 30px;
+}
+
+.success {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(108, 216, 108);
+    border-radius: 10px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.error {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(223, 113, 113);
+    border-radius: 10px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
 }
