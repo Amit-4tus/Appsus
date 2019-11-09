@@ -1,4 +1,4 @@
-import { eventBus } from '../../../../main-services/event-bus-service.js';
+import { eventBus } from '../../main-services/event-bus-service.js';
 
 export default {
     template: `
@@ -25,5 +25,8 @@ export default {
         close() {
             this.msg = null;
         }
+    },
+    components: {
+        eventBus,
     }
 }

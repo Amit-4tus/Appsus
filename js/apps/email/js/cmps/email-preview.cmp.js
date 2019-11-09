@@ -1,6 +1,8 @@
 import { eventBus } from '../../../../main-services/event-bus-service.js'
 import emailDetails from './email-details.cmp.js';
 import { emailService } from '../services/email-service.js'
+import userMsg from '../../../cmps/user-msg.cmp.js';
+
 
 export default {
     props: ['email'],
@@ -35,8 +37,8 @@ export default {
                                 <i v-if="!email.isRead" class="fas fa-envelope"></i>
                                 </span>
                           <span class="bcgColorIcon">
-                            <i v-if="!email.isTrash" title="Delete" @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt"></i>
-                            <i v-if="email.isTrash" title="Restore" @click ="deleteOrAddEmail('add')" class="fas fa-trash-restore"></i>
+                            <i v-if="!email.isTrash" title="Delete" @click="deleteOrAddEmail('removed')" class="fas fa-trash-alt"></i>
+                            <i v-if="email.isTrash" title="Restore" @click="deleteOrAddEmail('added')" class="fas fa-trash-restore"></i>
                           </span>
                       </span>
                     </li>
@@ -65,9 +67,10 @@ export default {
         },
         deleteOrAddEmail(removeOrAdd) {
             this.emailChange = removeOrAdd;
+            console.log(removeOrAdd);
             this.currEmail = this.email;
             emailService.getRemoveOrAdd(this.currEmail, removeOrAdd)
-                .then(removeOrAdd => {
+                .then(() => {
                     const msg = {
                         txt: `Email ${this.emailChange} Succefully`,
                         type: 'success'
@@ -81,7 +84,6 @@ export default {
                     }
                     eventBus.$emit('show-msg', msg);
                 })
-
         },
         changeStarred(email) {
             emailService.changeEmailParameter(email, 'isStarred')
@@ -92,20 +94,17 @@ export default {
             emailService.changeEmailParameter(this.currEmail, 'isRead');
         },
         replyEmail() {
-            const subject = {
+            const replyEmail = {
                 title: `Re: ${this.email.subject}`,
-                emailTo: this.email.email
+                emailTo: this.email.email,
+                text: '\n\n\n---------------------------------------\n' + this.email.name + '\n' + this.email.email + '\n\n' + this.email.text
             };
-            eventBus.$emit('subject', subject);
+            eventBus.$emit('subject', replyEmail);
         },
         getCurrTime(sentAt) {
             let tempTime = new Date(sentAt) + '';
             let date = tempTime.substring(3, 10)
-            console.log(tempTime);
-
             return tempTime.substring(16, 21) + date
-
-
         }
     },
     created() {
@@ -117,7 +116,6 @@ export default {
             this.emailId = this.email.id
             return '/emailApp/email/details/' + this.email.id
         },
-
     },
     components: {
         emailDetails,

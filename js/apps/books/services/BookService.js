@@ -17,6 +17,8 @@ _createOrLoadBooks()
 
 function getBookId(bookId) {
     const book = gBooks.find(book => book.id === bookId)
+    console.log(book);
+
     return Promise.resolve(book);
 }
 

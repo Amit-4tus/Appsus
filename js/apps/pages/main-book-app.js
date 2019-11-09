@@ -10,12 +10,10 @@ export default {
     template: `
    <section >
        
-   <nav >
-   <div >
-   <router-link to="/book-app/bookApp">Book Catalog</router-link>
-   <router-link to="/book-app/bookadd">Add Book</router-link>
-   <router-link to="/book-app/bookApp/details/:id"></router-link>
-         </div>
+
+   <nav class="booksNav" >
+   <router-link to="/book-app/bookApp">Book Catalog</router-link>|
+     <router-link to="/book-app/bookadd">Add Book</router-link>
 
       </nav>
 

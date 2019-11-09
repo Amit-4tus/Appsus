@@ -48,9 +48,10 @@ export default {
     },
     created() {
 
-        eventBus.$on('subject', (subject) => {
-            this.newEmail.title = subject.title;
-            this.newEmail.email = subject.emailTo
+        eventBus.$on('subject', (replyEmail) => {
+            this.newEmail.title = replyEmail.title;
+            this.newEmail.email = replyEmail.emailTo
+            this.newEmail.text = replyEmail.text
         })
 
     }

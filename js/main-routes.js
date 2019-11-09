@@ -55,7 +55,7 @@ const myRoutes = [{
         path: '/book-app',
         component: mainBookApp,
         children: [{
-                path: 'bookApp/:id',
+                path: 'bookApp/details/:id',
                 component: bookDetails,
             },
             {
