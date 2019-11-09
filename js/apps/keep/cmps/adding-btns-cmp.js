@@ -15,6 +15,13 @@ export default {
                     <i class="fas fa-font"></i>
                 </button>
             </div>
+
+            <div v-if="isAddingKeep" @click="addKeep('list')">
+                <span>List</span>
+                <button class="add-keep-btn small-btn">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
             
             <div v-if="isAddingKeep" @click="addKeep('audio')">
                 <span>Audio</span>
@@ -23,10 +30,17 @@ export default {
                 </button>
             </div>
 
-            <div v-if="isAddingKeep" @click="addKeep('img')">
+            <div v-if="isAddingKeep" @click="addKeep('image')">
                 <span>Image</span>
                 <button class="add-keep-btn small-btn">
                     <i class="far fa-image"></i>
+                </button>
+            </div>
+
+            <div v-if="isAddingKeep" @click="addKeep('video')">
+                <span>Video</span>
+                <button class="add-keep-btn small-btn">
+                    <i class="fas fa-video"></i>
                 </button>
             </div>
             

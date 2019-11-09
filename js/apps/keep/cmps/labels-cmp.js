@@ -1,0 +1,38 @@
+'use strict';
+
+import keepService from '../sevices/keep-service.js';
+
+export default {
+    props: ['keepData'],
+
+    template: `
+        <section class="labels">
+            Labels:
+            <div v-for="label in allLabels">
+                    <input type="checkbox" :value="label" v-model="checkedLabels.includes(label) "@change="updateLabel">{{label}}
+            </div>
+        </section>
+    `,
+
+    data() {
+        return {
+            checkedLabels: [],
+            allLabels: [],
+        };
+    },
+
+    created() {
+        this.allLabels = this.keepData.labels;
+        this.allLabels = keepService.getAllLabels();
+        this.checkedLabels = this.keepData.labels;
+    },
+
+    methods: {
+        updateLabel(ev) {
+            if (ev.target.checked) this.checkedLabels.push(ev.target.value);
+        },
+        updateAtParentCmp() {
+            this.$emit('labelsChanged', this.checkedLabels);
+        },
+    },
+};
