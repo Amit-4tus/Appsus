@@ -43,7 +43,7 @@ export default {
     </a>
   </div>
 </div>
-<div class="container-fluid bg-dark text-light p-4 text-center">
+<!-- <div class="container-fluid bg-dark text-light p-4 text-center">
         <h1 class="my-4">Our Apps</h1>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -59,7 +59,7 @@ export default {
                 <h4>Editors choice</h4>
             </div>
         </div>
-    </div>
+    </div> -->
         </section>
     `,
 };

@@ -15,7 +15,7 @@ export default {
                    <option value='time'>Time</option>
 </select>
            <email-msg></email-msg>
-           <div>{{unreadEmails}}  <i class="fas fa-envelope-open-text"></i></div>
+           <div>{{unreadEmails}} <i class="fas fa-envelope-open-text"></i></div>
        </section>
        <email-list :emailsForShow="emailsToShow"></email-list>
    </div>
@@ -47,8 +47,11 @@ export default {
     },
     computed: {
         emailsToShow() {
-            let email = this.emails.filter(email => email.isRead === false)
-            this.unreadEmails = email.length;
+            let emails = emailService.getEmails()
+            let emailsUnread = emails.filter(email => email.isRead === false)
+            this.unreadEmails = emailsUnread.length;
+
+
             if (!this.filterBy) return this.emails;
             let readOrUnread;
             let regex = new RegExp(`${this.filterBy.text}`, 'i');

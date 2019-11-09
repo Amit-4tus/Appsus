@@ -8,6 +8,10 @@ img.d-block {
     height: 550px;
 }
 
+body {
+    max-width: 100%;
+}
+
 .header {
     display: flex;
     flex-direction: row;
@@ -15,4 +19,9 @@ img.d-block {
     align-items: center;
     background-color: rgb(209, 209, 106);
     border-bottom: 2px black solid;
+}
+
+.container-fluid {
+    margin: 0 !important;
+    padding: 100% !important;
 }
