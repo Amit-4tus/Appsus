@@ -111,9 +111,9 @@ export default {
         },
         sendToKeep() {
             const msg = {
-                sender: email.name,
-                title: email.subject,
-                text: email.text,
+                sender: currEmail.name,
+                title: currEmail.subject,
+                text: currEmail.text,
                 type: 'email'
             }
             eventBus.$emit('email-keep-added', email);
