@@ -12,38 +12,27 @@ export const emailService = {
     getReadPrecent,
     getNextPrevEmail,
     getTrashEmails,
-    // removeEmail
 }
 
 const STORAGE_KEY_EMAILS = 'EMAILS';
 const STORAGE_KEY_TRASH_EMAILS = 'TRASH_EMAILS';
-let gEmail;
-let gTrashEmail;
+let gEmails;
+let gTrashEmails;
 createEmails()
 createTrashEmails()
 
 function getEmails() {
-    return gEmail;
+    return gEmails;
 }
 
 function getTrashEmails() {
-    return gTrashEmail;
+    return gTrashEmails;
 }
 
 function getEmailById(emailId) {
-    const email = gEmail.find(email => email.id === emailId)
+    const email = gEmails.find(email => email.id === emailId)
     return Promise.resolve(email);
 }
-
-// function removeEmail(currEmail) {
-//     currEmail.isTrash = true;
-//     let idx = gEmail.findIndex(email => email.id === currEmail.id);
-//     if (idx !== -1) gEmail.splice(idx, 1)
-//     utilService.store(STORAGE_KEY_EMAILS, gEmail)
-//     gTrashEmail.unshift(currEmail)
-//     utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmail)
-//     return Promise.resolve();
-// }
 
 function getRemoveOrAdd(currEmail, removeOrAdd) {
     let removeFrom;
@@ -52,12 +41,12 @@ function getRemoveOrAdd(currEmail, removeOrAdd) {
     // debugger
     if (removeOrAdd === 'removed') {
         currEmail.isTrash = true;
-        removeFrom = gEmail;
-        addTo = gTrashEmail
+        removeFrom = gEmails;
+        addTo = gTrashEmails
     } else {
         currEmail.isTrash = false;
-        removeFrom = gTrashEmail;
-        addTo = gEmail
+        removeFrom = gTrashEmails;
+        addTo = gEmails
     }
     let idx = removeFrom.findIndex(email => email.id === currEmail.id);
     console.log(idx);
@@ -66,20 +55,20 @@ function getRemoveOrAdd(currEmail, removeOrAdd) {
     if (idx !== -1) removeFrom.splice(idx, 1)
     addTo.unshift(currEmail)
     console.log('remove from', removeFrom);
-    console.log('gemail', gEmail);
-    console.log('gemail', gTrashEmail);
-    utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmail)
-    utilService.store(STORAGE_KEY_EMAILS, gEmail)
+    console.log('gemail', gEmails);
+    console.log('gemail', gTrashEmails);
+    utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmails)
+    utilService.store(STORAGE_KEY_EMAILS, gEmails)
     return Promise.resolve();
 }
 
 
 
 function changeEmailParameter(currEmail, parametr) {
-    var idx = gEmail.findIndex(email => email.id === currEmail.id);
+    var idx = gEmails.findIndex(email => email.id === currEmail.id);
     currEmail[parametr] = !currEmail[parametr];
-    if (idx !== -1) gEmail.splice(idx, 1, currEmail)
-    utilService.store(STORAGE_KEY_EMAILS, gEmail)
+    if (idx !== -1) gEmails.splice(idx, 1, currEmail)
+    utilService.store(STORAGE_KEY_EMAILS, gEmails)
 
     if (parametr === 'isRead') {
         let readPrecent = getReadPrecent()
@@ -91,8 +80,8 @@ function changeEmailParameter(currEmail, parametr) {
 
 function sendMail(email, subject, text, isDraft) {
     let newEmail = _createEmail(utilService.makeId(), 'tomi', email, subject, Date.now(), text, false, false, false, isDraft, false)
-    gEmail.unshift(newEmail)
-    utilService.store(STORAGE_KEY_EMAILS, gEmail)
+    gEmails.unshift(newEmail)
+    utilService.store(STORAGE_KEY_EMAILS, gEmails)
 }
 
 
@@ -112,27 +101,27 @@ function sendMail(email, subject, text, isDraft) {
 
 
 function getNextPrevEmail(emailId) {
-    let idx = gEmail.findIndex(email => email.id === emailId);
+    let idx = gEmails.findIndex(email => email.id === emailId);
     let nextIndex = idx + 1;
-    if (nextIndex === gEmail.length) nextIndex = 0;
-    let next = gEmail[nextIndex].id;
+    if (nextIndex === gEmails.length) nextIndex = 0;
+    let next = gEmails[nextIndex].id;
     let prevIndex = idx - 1;
-    if (prevIndex === -1) prevIndex = gEmail.length - 1;
-    let prev = gEmail[prevIndex].id;
+    if (prevIndex === -1) prevIndex = gEmails.length - 1;
+    let prev = gEmails[prevIndex].id;
     return { prev, next };
 }
 
 
 function getReadPrecent() {
-    let readEmails = gEmail.filter(email => email.isRead)
-    let numOfRead = (readEmails.length / gEmail.length) * 100
+    let readEmails = gEmails.filter(email => email.isRead)
+    let numOfRead = (readEmails.length / gEmails.length) * 100
     return numOfRead.toFixed()
 }
 
 function createEmails() {
-    gEmail = utilService.load(STORAGE_KEY_EMAILS)
-    if (!gEmail || gEmail.length === 0) {
-        gEmail = [
+    gEmails = utilService.load(STORAGE_KEY_EMAILS)
+    if (!gEmails || gEmails.length === 0) {
+        gEmails = [
             _createEmail(utilService.makeId(), 'avi', 'avi@gmail.com', '[Draft] Wassap with Vue?', 1573298869482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
             _createEmail(utilService.makeId(), 'koki', 'koki@gmail.com', 'hi', 1573298869182, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
             _createEmail(utilService.makeId(), 'bobi', 'bobi@gmail.com', 'hola', 1573298829482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
@@ -147,26 +136,26 @@ function createEmails() {
             _createEmail(utilService.makeId(), 'tomi', 'tomi@gmail.com', 'yoyo', 1573298569482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false)
 
         ]
-        utilService.store(STORAGE_KEY_EMAILS, gEmail)
+        utilService.store(STORAGE_KEY_EMAILS, gEmails)
     }
 
-    return Promise.resolve(gEmail);
+    return Promise.resolve(gEmails);
 }
 
 function createTrashEmails() {
-    gTrashEmail = utilService.load(STORAGE_KEY_TRASH_EMAILS)
-    if (!gTrashEmail || gTrashEmail.length === 0) {
-        gTrashEmail = [
+    gTrashEmails = utilService.load(STORAGE_KEY_TRASH_EMAILS)
+    if (!gTrashEmails || gTrashEmails.length === 0) {
+        gTrashEmails = [
             _createEmail(utilService.makeId(), 'avi', 'dgjdhujhg@yahoo.com', 'Wassap with Vue?', 1573228869482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
             _createEmail(utilService.makeId(), 'koki', 'koki@outlook.com', 'hi', 1573298669482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
             _createEmail(utilService.makeId(), 'bobi', 'bodsgfhgbi@gmail.com', 'yoyo', 1573198869482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
             _createEmail(utilService.makeId(), 'momi', 'moasdfgmi@gmail.com', 'how r u?', 1575298369482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
 
         ]
-        utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmail)
+        utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmails)
     }
 
-    return Promise.resolve(gTrashEmail);
+    return Promise.resolve(gTrashEmails);
 }
 
 

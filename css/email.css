@@ -1,5 +1,10 @@
+@font-face {
+    font-family: 'Roboto', sans-serif;
+    src: url('../fonts/Roboto-Black.ttf')
+}
+
 .email-main-container {
-    max-height: 85vh;
+    max-height: 80vh;
     display: flex;
     flex-direction: row;
 }
@@ -27,7 +32,6 @@ a {
 
 .email:first-child {
     border-top: 0.5px solid rgb(190, 190, 190);
-    /* border-bottom: none; */
 }
 
 .email:hover {
@@ -39,8 +43,6 @@ a {
     border-top: none;
     padding: 10px;
     padding-top: 10px;
-    /* max-width: 80%; */
-    /* height: 100vh; */
 }
 
 .email-Fullbody {
@@ -52,27 +54,25 @@ a {
     background-color: rgba(229, 238, 238, 0.8);
 }
 
-
-/* .email li {
-    height: 30px;
+.screen {
+    display: none;
 }
-
-.email-body{
-
-} */
 
 .email-main-container {
     display: flex;
     flex-direction: row;
-    /* border-top: black solid 1px; */
 }
 
 .email-nav {
     display: flex;
-    width: 25%;
-    /* border: 1px solid black; */
+    width: 40%;
     max-height: 100vh;
-    /* background-color: rgb(228, 225, 225); */
+}
+
+.addNewEmail {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0.5px solid black;
 }
 
 .email-list {
@@ -125,11 +125,6 @@ a {
 .starfill {
     color: rgb(158, 158, 17);
 }
-
-
-/* textarea {
-    z-index: -10;
-} */
 
 .newMessage {
     background-color: #202124;
@@ -221,8 +216,6 @@ a {
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    /* margin-left: 41px;
-    margin-top: 10px; */
     background-color: rgba(242, 245, 245, 0.8);
     height: 50px;
     padding: 0 40px;
@@ -233,7 +226,6 @@ a {
     border-radius: 8px;
     outline: none;
     background-color: rgb(224, 224, 224);
-    /* background: #f1f3f4; */
     border: 1px solid transparent;
     max-width: 200px;
     position: relative;
@@ -243,11 +235,17 @@ a {
 .emailSubject {
     display: flex;
     justify-content: space-between;
-    /* margin-top: 15px; */
 }
 
 .emailtxtBody {
     margin-top: 15px;
+}
+
+.misterEmail {
+    margin-top: 20px;
+    padding-left: 20px;
+    color: rgb(216, 195, 8);
+    font-size: 23px !important;
 }
 
 
@@ -262,11 +260,12 @@ a {
     align-items: flex-start;
     align-content: center;
     height: 75vh;
-    padding: 50px 0;
+    padding: 0;
+    padding-bottom: 50px;
     margin-right: 0;
     font-size: 20px;
     background-color: rgba(242, 245, 245, 0.8);
-    /* width: 80%; */
+    width: 100%;
     /* margin-top: 35px; */
 }
 
@@ -290,7 +289,7 @@ a {
     justify-content: space-between;
     flex-direction: column;
     margin: 10px 20px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     padding-bottom: 20px;
     /* border: none; */
 }
@@ -414,10 +413,17 @@ i.fas:focus {
     margin-left: 10px;
 }
 
+.emails-list {
+    padding: 0;
+}
+
 .emails-list-container {
     max-width: 100%;
     margin: 0 50px;
     padding: 5% 0;
+    padding-top: 0;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #menuBtn {
@@ -442,6 +448,11 @@ i.fas:focus {
     visibility: visible;
     opacity: 1;
 }
+
+
+/* .fa-envelope-open-text {
+    color: #314568;
+} */
 
 @media (max-width:900px) {
     .emails-list-container {
@@ -502,23 +513,19 @@ i.fas:focus {
     .email-nav {
         max-width: 100%;
     }
+    .fa-bars {
+        font-size: 30px;
+        cursor: pointer;
+        color: rgb(216, 195, 8);
+    }
     .emailFull {
         max-width: 95%;
         margin: 0 auto;
         border: none;
     }
-    /* .asaid-nav-bar {
-        flex-direction: row;
-        /* justify-content: space-between; */
-    /* align-items: flex-start; */
-    /* align-content: center;
-    height: 10vh; */
-    /* padding: 50px 0; */
-    /* margin-right: 0;
-    font-size: 20px; */
-    /* background-color: rgba(242, 245, 245, 0.8); */
-    /* width: 80%; */
-    /* margin-top: 35px; */
+    .screen {
+        display: block;
+    }
     .asaid-nav-bar {
         flex-direction: column;
         justify-content: center;
@@ -532,7 +539,7 @@ i.fas:focus {
         transform: translate(100%, 0);
         transition: transform .6s;
         z-index: 102;
-        width: 40%;
+        width: 50%;
     }
     .openMenu+.asaid-nav-bar {
         transform: translate(0, 0);
@@ -558,11 +565,6 @@ i.fas:focus {
     .listFilter {
         padding: 5px;
     }
-    /* .email-list {
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-    } */
     .email-nav {
         width: 100%;
         justify-content: flex-end;
