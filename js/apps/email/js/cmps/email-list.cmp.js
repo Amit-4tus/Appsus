@@ -8,7 +8,6 @@ export default {
                   <email-preview  :email="currEmail" v-for="(currEmail, idx) in emailsForShow" :key="currEmail.id" ></email-preview> 
             </ul>
        </section>
-
     `,
     components: {
         emailPreview,

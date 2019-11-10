@@ -9,7 +9,7 @@ export default {
    <div>
        <section class="listFilter">
            <email-filter @filtered="setFilter"></email-filter> 
-           <select class="sortList" v-model="sortBy">
+           <select class="sortList custom-select" v-model="sortBy">
                    <option value='' selected>Sort By</option>
                    <option value='title'>Title</option>
                    <option value='time'>Time</option>
@@ -35,41 +35,21 @@ export default {
             email.isDraft !== true)
         this.emails = email;
         this.emailsForShow = emailService.getEmails()
-        eventBus.$on('updateEmails', (emails) => {
-            this.emails = emailService.getEmails()
+        eventBus.$on('updateEmails', (emailId) => {
+            let idx = this.emails.findIndex(email => email.id === emailId);
+            if (idx !== -1) this.emails.splice(idx, 1)
         })
     },
     methods: {
         setFilter(filterBy) {
             this.filterBy = filterBy
         },
-        //     deleteOrAddEmail(removeOrAdd) {
-        //         this.emailChange = removeOrAdd;
-        //         console.log(removeOrAdd);
-        //         this.currEmail = this.email;
-        //         emailService.getRemoveOrAdd(this.currEmail, this.emailChange)
-        //             .then(() => {
-        //                 const msg = {
-        //                     txt: `Email ${this.emailChange} Succefully`,
-        //                     type: 'success'
-        //                 }
-        //                 eventBus.$emit('show-msg', msg);
-        //             })
-        //             .catch(err => {
-        //                 const msg = {
-        //                     txt: `NOT Saved (${err})`,
-        //                     type: 'error'
-        //                 }
-        //                 eventBus.$emit('show-msg', msg);
-        //             })
-        //     },
     },
     computed: {
         emailsToShow() {
             let emails = emailService.getEmails()
             let emailsUnread = emails.filter(email => email.isRead === false)
             this.unreadEmails = emailsUnread.length;
-
 
             if (!this.filterBy) return this.emails;
             let readOrUnread;

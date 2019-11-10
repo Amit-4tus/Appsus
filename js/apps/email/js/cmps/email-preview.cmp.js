@@ -9,7 +9,6 @@ export default {
     template: `
        <section class="email-details">
              <ul @click ="readEmail" :class="{unreadStyle:!email.isRead, email}" >
-                 <!-- {{currEmail}} -->
                   <li class="emailName"> {{email.name}}</li>
                   <li class="emailSubject"> 
                        <span class="email-title">{{email.subject}} 
@@ -40,8 +39,8 @@ export default {
                             <i v-if="!email.isTrash" title="Delete" @click="deleteOrAddEmail('removed')" class="fas fa-trash-alt"></i>
                             <i v-if="email.isTrash" title="Restore" @click="deleteOrAddEmail('added')" class="fas fa-trash-restore"></i>
                           </span>
-                          <span class="bcgColorIcon">
-                            <i v-if="!email.isTrash" title="Send Note" @click="sendToKeep()" class="far fa-sticky-note"></i>
+                          <span v-if="!email.isTrash"  class="bcgColorIcon">
+                            <i title="Send Note" @click="sendToKeep()" class="far fa-sticky-note"></i>
                           </span>
                       </span>
                     </li>
@@ -83,7 +82,7 @@ export default {
                     }
                     eventBus.$emit('show-msg', msg);
                 })
-            eventBus.$emit('updateEmails', 'emails');
+            eventBus.$emit('updateEmails', this.email.id);
         },
         changeStarred(email) {
             emailService.changeEmailParameter(email, 'isStarred')
@@ -118,7 +117,6 @@ export default {
     created() {
         this.currEmail = this.email;
         this.$emit('filtered', this.filterBy)
-
     },
     computed: {
         emailUrl() {
