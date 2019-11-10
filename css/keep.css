@@ -9,9 +9,10 @@
 
 .keep-app {
     display: flex;
+    flex-direction: column;
     font-family: 'Varela Round', sans-serif;
-    letter-spacing: 1.4px;
     padding-top: 1%;
+    padding-left: 1%;
 }
 
 .keep {
@@ -22,7 +23,7 @@
     font-size: 1.3rem;
     padding: 10px 20px;
     margin: 5px;
-    width: 28%;
+    /* width: 35%; */
 }
 
 .keep-main {
@@ -54,7 +55,12 @@ h3 {
 
 .keeps-list {
     display: grid;
-    /* grid-template-columns: ; */
+}
+
+@media (min-width: 600px) {
+    .keeps-list {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .CRUDIcon {
@@ -67,29 +73,35 @@ h3 {
     position: fixed;
     z-index: 1;
     bottom: 5vh;
-    right: 5vh;
+    right: 0px;
+    outline: none;
 }
 
 .add-keep-btn {
     border: 2px solid black;
     border-radius: 100%;
-    background-color: blue;
+    background-color: #4267b2;
     color: white;
+    outline: none;
 }
 
 .adding-btn-txt {
     margin: auto auto;
     text-align: right;
+    outline: none;
 }
 
 .large-btn {
+    float: right;
     width: 7vh;
     height: 7vh;
+    outline: none;
 }
 
 .small-btn {
     width: 5vh;
     height: 5vh;
+    outline: none;
     /* padding-left: 30px; */
 }
 
@@ -101,8 +113,9 @@ h3 {
     border-radius: 100%;
     width: 5vh;
     height: 5vh;
-    background-color: blue;
+    background-color: #4267b2;
     color: white;
+    outline: none;
 }
 
 .keep-edit {
@@ -113,16 +126,36 @@ h3 {
     margin: 0 auto;
 }
 
-img {
-    width: 155px;
+.img {
+    width: 100%;
+    height: auto;
 }
 
 audio {
-    width: 156px;
-    height: 30px;
+    width: 100%;
 }
 
 video {
-    width: 156px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
+}
+
+.new-keep-creator {
+    position: fixed;
+    top: 30vh;
+    padding: 10vh;
+    margin:  auto;
+    background-color: #4267b2;
+    border-radius: 20px;
+}
+
+.cancel-btn {
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #4267b2;
+    outline: none;
+    font-size: 6rem;
+    position: fixed;
+    top: 5vh;
+    right: 5vh;
 }

@@ -1,5 +1,8 @@
 'use strict';
 
+import {eventBus} from '../../../main-services/event-bus-service.js';
+import keepService from '../sevices/keep-service.js';
+
 export default {
     template: `
         <section class="keep-labels">
@@ -11,9 +14,12 @@ export default {
                 </div>
 
                 <h4 v-for="(label, idx) in labels" class="keep-label clickable">
-                    <i class="fas fa-tag"></i>
-                    {{label}}
-                    <i v-if="isEditingLabels" class="far fa-trash-alt" @click="deleteLabel(idx)"></i>
+                    <div class="label">
+                    <input type="checkbox" v-model="checkedLabels.includes(label)" @change="updateSelectedLabels">
+                        <i class="fas fa-tag"></i>
+                        {{label}}
+                        <i v-if="isEditingLabels" class="far fa-trash-alt" @click="deleteLabel(idx)"></i>
+                    </div>
                 </h4>
 
                 <h4 v-if="!isEditingLabels" class="clickable" @click="isEditingLabels = true">
@@ -38,16 +44,32 @@ export default {
             isEditingLabels: false,
             isAddingLabel: false,
             labels: ['Personal', 'Work'],
+            checkedLabels: [],
         };
+    },
+
+    created() {
+        this.getLabels();
+        keepService.updateLabels(this.labels);
     },
 
     methods: {
         deleteLabel(idx) {
             this.labels.splice(idx, 1);
+            keepService.updateLabels(this.labels);
         },
         addLabel(ev) {
             this.isAddingLabel = false;
             this.labels.push(ev.target.value);
+            keepService.updateLabels(this.labels);
+        },
+        getLabels() {
+            let labels = keepService.getLabels();
+                if (!labels) return;
+            this.labels = labels;
+        },
+        updateSelectedLabels() {
+            eventBus.$emit('selectedLabelsChanged', this.checkedLabels);
         },
     },
 };

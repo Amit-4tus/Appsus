@@ -1,14 +1,16 @@
 'use strict';
 
+import { eventBus } from "../../../main-services/event-bus-service.js";
+
 export default {
     template: `
         <section>
-            Sort By: <select v-model="sortBy" @change="updtParentCmp">
+            Sort: <select v-model="sortBy" @change="updtParentCmp">
                 <option value="name">Name</option>
                 <option value="date">Date</option>
             </select>
 
-            Filter By Type: <select v-model="filterBy" @change="updtParentCmp">
+            Filter: <select v-model="filterBy" @change="updtParentCmp">
                 <option value="all">All</option>
                 <option value="task">Tasks</option>
                 <option value="image">Images</option>
@@ -28,7 +30,7 @@ export default {
 
     methods: {
         updtParentCmp() {
-            this.$emit('sortByChanged', {filterBy: this.filterBy, sortBy: this.sortBy});
+            eventBus.$emit('sortByChanged', {filterBy: this.filterBy, sortBy: this.sortBy});
         },
     },
 };
