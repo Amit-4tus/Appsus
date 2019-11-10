@@ -24,3 +24,5 @@ function updateKeep(updtdKeepData) {
 function getAllLabels() {
     return keepStorageService.getAllLabels();
 };
+
+eventBus.$on('email-keep-added', addKeep);

@@ -10,7 +10,7 @@ export default {
                     <i v-if="isEditingLabels" class="fas fa-check clickable" @click="isEditingLabels = false, isAddingLabel = false"></i>
                 </div>
 
-                <h4 v-for="(label, idx) in labels" class="clickable">
+                <h4 v-for="(label, idx) in labels" class="keep-label clickable">
                     <i class="fas fa-tag"></i>
                     {{label}}
                     <i v-if="isEditingLabels" class="far fa-trash-alt" @click="deleteLabel(idx)"></i>

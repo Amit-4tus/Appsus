@@ -2,7 +2,7 @@
 import { emailService } from '../services/email-service.js'
 import emailList from './email-list.cmp.js';
 import emailFilter from './email-filter.cmp.js';
-import userMsg from '../../../cmps/user-msg.cmp.js';
+import userMsg from '../../../global-cmps/user-msg.cmp.js';
 
 export default {
     template: `

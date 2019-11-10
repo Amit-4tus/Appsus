@@ -9,37 +9,37 @@ export default {
                 <i class="fas fa-plus"></i>
             </button>
 
+            <span v-if="isAddingKeep" class="adding-btn-txt" @click="addKeep('txt')">Text</span>
             <div v-if="isAddingKeep" @click="addKeep('txt')">
-                <span>Text</span>
                 <button class="add-keep-btn small-btn">
                     <i class="fas fa-font"></i>
                 </button>
             </div>
             
+            <span v-if="isAddingKeep" class="adding-btn-txt" @click="addKeep('audio')">Audio</span>
             <div v-if="isAddingKeep" @click="addKeep('audio')">
-                <span>Audio</span>
                 <button class="add-keep-btn small-btn">
                     <i class="fas fa-music"></i>
                 </button>
             </div>
 
+            <span v-if="isAddingKeep" class="adding-btn-txt" @click="addKeep('image')">Image</span>
             <div v-if="isAddingKeep" @click="addKeep('image')">
-                <span>Image</span>
                 <button class="add-keep-btn small-btn">
                     <i class="far fa-image"></i>
                 </button>
             </div>
 
+            <span v-if="isAddingKeep" class="adding-btn-txt" @click="addKeep('video')">Video</span>
             <div v-if="isAddingKeep" @click="addKeep('video')">
-                <span>Video</span>
                 <button class="add-keep-btn small-btn">
                     <i class="fas fa-video"></i>
                 </button>
             </div>
             
+            <span v-if="isAddingKeep" class="adding-btn-txt" @click="addKeep('task')">Task</span>
             <div v-if="isAddingKeep" @click="addKeep('task')">
-                <span>Task</span>
-                <button class="add-keep-btn large-btn">
+                <button class="add-keep-btn small-btn">
                     <i class="fas fa-tshirt"></i>
                 </button>
             </div>
