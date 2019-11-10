@@ -64,7 +64,7 @@ a {
 .email-main-container {
     display: flex;
     flex-direction: row;
-    border-top: black solid 1px;
+    /* border-top: black solid 1px; */
 }
 
 .email-nav {
@@ -446,8 +446,37 @@ i.fas:focus {
 @media (max-width:900px) {
     .emails-list-container {
         max-width: 100%;
-        margin: 0 5px;
+        margin: 0 auto;
         padding: 5% 0;
+        padding-top: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    /* .asaid-nav-bar {
+        width: 100%;
+    } */
+    .statusRead {
+        margin-left: 5px;
+    }
+    .emails-list {
+        padding: 0;
+    }
+    .email-nav {
+        max-width: 40%;
+    }
+    .router-email {
+        justify-content: center;
+        align-content: center;
+    }
+    .compose {
+        margin-left: 5px;
+        font-size: 20px;
+    }
+    .saidLinks {
+        width: 85%;
+        height: 40px;
+        color: #5f6368;
+        padding-left: 20px;
     }
 }
 
@@ -470,6 +499,14 @@ i.fas:focus {
         color: #5f6368;
         padding-left: 20px;
     }
+    .email-nav {
+        max-width: 100%;
+    }
+    .emailFull {
+        max-width: 95%;
+        margin: 0 auto;
+        border: none;
+    }
     /* .asaid-nav-bar {
         flex-direction: row;
         /* justify-content: space-between; */
@@ -484,6 +521,8 @@ i.fas:focus {
     /* margin-top: 35px; */
     .asaid-nav-bar {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         height: 100vh;
         position: fixed;
         top: 0;
@@ -493,13 +532,14 @@ i.fas:focus {
         transform: translate(100%, 0);
         transition: transform .6s;
         z-index: 102;
+        width: 40%;
     }
     .openMenu+.asaid-nav-bar {
         transform: translate(0, 0);
     }
     .asaid-nav-bar li {
         border-bottom: 1px solid rgba(153, 153, 153, 0.5);
-        width: 100%;
+        width: 50%;
     }
     .asaid-nav-bar a {
         display: block;
@@ -526,5 +566,8 @@ i.fas:focus {
     .email-nav {
         width: 100%;
         justify-content: flex-end;
+    }
+    .emails-list-container {
+        font-size: 16px;
     }
 }

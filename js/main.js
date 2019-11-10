@@ -11,7 +11,7 @@ let root = {
     template: `
         <section >
             <div class="header">
-                <h1>Apsus</h1>
+                <h1 class="logo">AppSus</h1>
                 <user-msg></user-msg>
                 <nav>
                     <router-link to="/">Home</router-link>

@@ -107,7 +107,7 @@ export default {
         getCurrTime(sentAt) {
             let tempTime = new Date(sentAt) + '';
             let date = tempTime.substring(3, 10)
-            return tempTime.substring(16, 21) + date
+            return tempTime.substring(16, 21)
         },
         sendToKeep() {
             const email = {
