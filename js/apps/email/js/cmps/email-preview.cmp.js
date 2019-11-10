@@ -40,6 +40,9 @@ export default {
                             <i v-if="!email.isTrash" title="Delete" @click="deleteOrAddEmail('removed')" class="fas fa-trash-alt"></i>
                             <i v-if="email.isTrash" title="Restore" @click="deleteOrAddEmail('added')" class="fas fa-trash-restore"></i>
                           </span>
+                          <span class="bcgColorIcon">
+                            <i v-if="!email.isTrash" title="Send Note" @click="sendToKeep()" class="far fa-sticky-note"></i>
+                          </span>
                       </span>
                     </li>
                     <li class="emailName"> {{email.name}}       <{{email.email}}></li>
@@ -105,6 +108,15 @@ export default {
             let tempTime = new Date(sentAt) + '';
             let date = tempTime.substring(3, 10)
             return tempTime.substring(16, 21) + date
+        },
+        sendToKeep() {
+            const msg = {
+                sender: email.name,
+                title: email.subject,
+                text: email.text,
+                type: 'email'
+            }
+            eventBus.$emit('email-keep-added', email);
         }
     },
     created() {
