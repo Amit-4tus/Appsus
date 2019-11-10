@@ -1,5 +1,7 @@
 'use strict';
 
+import theRouter from '../../main-routes.js'
+
 export default {
     template: `
         <section>
@@ -46,18 +48,18 @@ export default {
 <div class="container-fluid bg-dark text-light p-4 text-center">
         <h1 class="titleApps">Our Apps</h1>
         <div class="row">
-            <div>
-                <img src="img/emailPic.png" class="mb-3" />
-                <h4>misterEmail</h4>
-            </div>
-            <div >
-                <img src="img/keeppic.png" class="mb-3" />
-                <h4>missKeep</h4>
-            </div>
-            <div >
-                <img src="img/bookpic.png" class="mb-3">
-                <h4>missBook</h4>
-            </div>
+          <router-link to="/emailApp/email/inbox">
+          <img src="img/emailPic.png" class="mb-3" />
+          <h4>misterEmail</h4>
+        </router-link>
+        <router-link to="/book-app/bookApp">
+          <img src="img/keeppic.png" class="mb-3" />
+          <h4>missKeep</h4>
+        </router-link>
+        <router-link to="/keep-app/main">
+          <img src="img/bookpic.png" class="mb-3">
+          <h4>missBook</h4>
+        </router-link>
         </div>
     </div>
         </section>
