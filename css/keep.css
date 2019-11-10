@@ -10,6 +10,8 @@
 .keep-app {
     display: flex;
     font-family: 'Varela Round', sans-serif;
+    letter-spacing: 1.4px;
+    padding-top: 1%;
 }
 
 .keep {
@@ -19,11 +21,26 @@
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 1.3rem;
     padding: 10px 20px;
-    margin: 10px;
+    margin: 5px;
+    width: 28%;
+}
+
+.keep-main {
+    width: 83%;
+    padding: 0% 5%;
+}
+
+.keep-labels {
+    width: 17%;
+    padding-left: 1%;
 }
 
 aside {
     background-color: white;
+}
+
+.keep-label {
+    font-size: 1.3rem;
 }
 
 .labels-header {
@@ -37,6 +54,7 @@ h3 {
 
 .keeps-list {
     display: grid;
+    /* grid-template-columns: ; */
 }
 
 .CRUDIcon {
@@ -45,7 +63,7 @@ h3 {
 
 .adding-btns {
     display: grid;
-    /* grid-template-columns: 2.5fr 1fr; */
+    grid-template-columns: 1fr 1fr;
     position: fixed;
     z-index: 1;
     bottom: 5vh;
@@ -59,6 +77,11 @@ h3 {
     color: white;
 }
 
+.adding-btn-txt {
+    margin: auto auto;
+    text-align: right;
+}
+
 .large-btn {
     width: 7vh;
     height: 7vh;
@@ -67,6 +90,7 @@ h3 {
 .small-btn {
     width: 5vh;
     height: 5vh;
+    /* padding-left: 30px; */
 }
 
 .add-txt-keep-btn {

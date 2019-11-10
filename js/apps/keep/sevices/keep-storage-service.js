@@ -14,6 +14,7 @@ function getKeeps() {
 };
 
 function addKeep(newKeepData) {
+    if (!newKeepData.id) newKeepData.id = localStorage.KeepsCurrId;
     let keeps = JSON.parse(localStorage.getItem('gKeeps'));
     keeps.unshift(newKeepData);
     localStorage.setItem('gKeeps', JSON.stringify(keeps));

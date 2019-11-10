@@ -8,9 +8,7 @@ export default {
     template: `
         <section class="keeps-list">
             <my-filter @sortByChanged="updtFilter"></my-filter>
-            <div v-for="keep in keepsToShow">
-                <keep class="keep clickable" :keepData="keep"></keep>
-            </div>
+            <keep class="keep clickable" :keepData="keep" v-for="keep in keepsToShow"></keep>
         </section>
     `,
 

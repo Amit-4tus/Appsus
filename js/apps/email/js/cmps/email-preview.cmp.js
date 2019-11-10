@@ -1,7 +1,7 @@
 import { eventBus } from '../../../../main-services/event-bus-service.js'
 import emailDetails from './email-details.cmp.js';
 import { emailService } from '../services/email-service.js'
-import userMsg from '../../../cmps/user-msg.cmp.js';
+import userMsg from '../../../global-cmps/user-msg.cmp.js';
 
 
 export default {

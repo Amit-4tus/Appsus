@@ -1,6 +1,8 @@
 'use strict';
 
 import keepService from '../sevices/keep-service.js';
+import userMessage from '../../global-cmps/user-msg.cmp.js';
+import {eventBus} from '../../../main-services/event-bus-service.js';
 
 export default {
     props: ['keepData'],
@@ -22,7 +24,7 @@ export default {
                 <router-link :to="getEditCmpUrl">
                     <i class="CRUDIcon far fa-edit"></i>
                 </router-link>
-                <i class="CRUDIcon far fa-trash-alt" @click="keepService.deleteKeep(keepData.id)"></i>
+                <i class="CRUDIcon far fa-trash-alt" @click="deleteKeep()"></i>
             </div>
         </section>
     `,
@@ -33,6 +35,13 @@ export default {
             hasBeenClicked: false,
         };
     },
+    
+    methods: {
+        deleteKeep() {
+            keepService.deleteKeep(this.keepData.id);
+            eventBus.$emit('show-msg', {txt: 'Your Keep Has Been Successfully Deleted'});
+        },
+    },
 
     computed: {
         getEditCmpUrl() {
@@ -41,5 +50,9 @@ export default {
         getAudioURL() {
             URL.createObjectURL('../audio/New Song Idea')
         },
+    },
+
+    components: {
+        userMessage,
     },
 };

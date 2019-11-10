@@ -26,3 +26,8 @@ body {
     margin: 0 !important;
     padding: 100% !important;
 }
+
+.user-msg {
+    background-color: rgb(58, 240, 58);
+    padding: 5px;
+}
