@@ -12,24 +12,24 @@ export default {
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img/notebook.jpg" class="d-block w-100" alt="...">
+        <img src="img/remember.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h2>Never Forget A Thing</h2>
+          <h5>Our keep-app will make sure you never miss a single thing</h5>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/email.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h2>The Ability To Send</h2>
+          <h5>Use our groundbreaking technology that will aloow you to send emails to yourself</h5>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/imagination.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <h2>Read. Imagine. Live.</h2>
+          <h5>With our book shop you will find books to nourish you mind and creativity</h5>
         </div>
       </div>
     </div>
