@@ -12,6 +12,7 @@ export const emailService = {
     getReadPrecent,
     getNextPrevEmail,
     getTrashEmails,
+    removeEmail
 }
 
 const STORAGE_KEY_EMAILS = 'EMAILS';
@@ -31,14 +32,23 @@ function getTrashEmails() {
 
 function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId)
+    console.log(email);
     return Promise.resolve(email);
+}
+
+function removeEmail(currEmail) {
+    currEmail.isTrash = true;
+    let idx = gEmails.findIndex(email => email.id === currEmail.id);
+    if (idx !== -1) gEmails.splice(idx, 1)
+    utilService.store(STORAGE_KEY_EMAILS, gEmails)
+    gTrashEmails.unshift(currEmail)
+    utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmails)
+    return Promise.resolve();
 }
 
 function getRemoveOrAdd(currEmail, removeOrAdd) {
     let removeFrom;
     let addTo;
-    console.log(removeOrAdd);
-    // debugger
     if (removeOrAdd === 'removed') {
         currEmail.isTrash = true;
         removeFrom = gEmails;
@@ -49,14 +59,8 @@ function getRemoveOrAdd(currEmail, removeOrAdd) {
         addTo = gEmails
     }
     let idx = removeFrom.findIndex(email => email.id === currEmail.id);
-    console.log(idx);
-
-
     if (idx !== -1) removeFrom.splice(idx, 1)
     addTo.unshift(currEmail)
-    console.log('remove from', removeFrom);
-    console.log('gemail', gEmails);
-    console.log('gemail', gTrashEmails);
     utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmails)
     utilService.store(STORAGE_KEY_EMAILS, gEmails)
     return Promise.resolve();
@@ -83,21 +87,6 @@ function sendMail(email, subject, text, isDraft) {
     gEmails.unshift(newEmail)
     utilService.store(STORAGE_KEY_EMAILS, gEmails)
 }
-
-
-
-// function getNextEmailId(emailId) {
-//     var idx = gEmail.findIndex(email => email.id === emailId);
-//     idx++;
-//     if (idx === gEmail.length) idx = 0;
-
-//     return gEmail[idx].id;
-// }
-
-// function _timeAtSend() {
-//     let timeAt = '' + new Date();
-//     return timeAt.substring(16, 21)
-// }
 
 
 function getNextPrevEmail(emailId) {
@@ -132,8 +121,12 @@ function createEmails() {
             _createEmail(utilService.makeId(), 'koki', 'koki@gmail.com', '[Draft] hi', 1573298863482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
             _createEmail(utilService.makeId(), 'bobi', 'bobi@gmail.com', 'hola', 1573298862482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, false, true, false, false),
             _createEmail(utilService.makeId(), 'momi', 'momi@gmail.com', '[Draft] bey', 1573298369482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
-            _createEmail(utilService.makeId(), 'yomi', 'yomi@gmail.com', 'hello', 1573298849482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
-            _createEmail(utilService.makeId(), 'tomi', 'tomi@gmail.com', 'yoyo', 1573298569482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false)
+            _createEmail(utilService.makeId(), 'yomi', 'yomi@gmail.com', 'hello', 15732923849482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, true, true, false, false),
+            _createEmail(utilService.makeId(), 'tomi', 'tomi@gmail.com', 'yoyo', 1573295749482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
+            _createEmail(utilService.makeId(), 'avi', 'avi@gmail.com', '[Draft] Wassap with Vue?', 1573298869482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, true, false),
+            _createEmail(utilService.makeId(), 'koki', 'koki@gmail.com', 'hi', 157329835182, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
+            _createEmail(utilService.makeId(), 'bobi', 'bobi@gmail.com', 'hola', 1573218829482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', false, true, true, false, false),
+            _createEmail(utilService.makeId(), 'momi', 'momi@gmail.com', 'bey', 1573298885482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, true, false, false),
 
         ]
         utilService.store(STORAGE_KEY_EMAILS, gEmails)
