@@ -71,6 +71,8 @@ export default {
                     console.log(book);
 
                     this.nextBookId = bookService.getNexBookId(this.book.id);
+                    console.log(bookService.getNexBookId(this.book.id));
+                    
                 })
         },
         saveReview() {

@@ -15,13 +15,6 @@ export default {
                     <i class="fas fa-font"></i>
                 </button>
             </div>
-
-            <div v-if="isAddingKeep" @click="addKeep('list')">
-                <span>List</span>
-                <button class="add-keep-btn small-btn">
-                    <i class="fas fa-list"></i>
-                </button>
-            </div>
             
             <div v-if="isAddingKeep" @click="addKeep('audio')">
                 <span>Audio</span>

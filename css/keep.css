@@ -9,6 +9,7 @@
 
 .keep-app {
     display: flex;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .keep {
@@ -43,6 +44,8 @@ h3 {
 }
 
 .adding-btns {
+    display: grid;
+    /* grid-template-columns: 2.5fr 1fr; */
     position: fixed;
     z-index: 1;
     bottom: 5vh;

@@ -19,6 +19,7 @@ body {
     align-items: center;
     background-color: rgb(209, 209, 106);
     border-bottom: 2px black solid;
+    height: 10%;
 }
 
 .container-fluid {
