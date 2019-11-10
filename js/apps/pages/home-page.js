@@ -3,8 +3,8 @@
 export default {
     template: `
         <section>
-            <div class="bd-example">
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <!-- <div class="bd-example"> -->
+  <!-- <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -14,21 +14,21 @@ export default {
       <div class="carousel-item active">
         <img src="img/keep.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
+          <h5 class="homePageTitle">misterEmail</h5>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/email.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
+          <h5  class="homePageTitle" >Second slide label</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/book.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
+          <h5  class="homePageTitle" >Third slide label</h5>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default {
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
+</div> -->
 <div class="container-fluid bg-dark text-light p-4 text-center">
         <h1 class="titleApps">Our Apps</h1>
         <div class="row">

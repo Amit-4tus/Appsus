@@ -85,21 +85,6 @@ function sendMail(email, subject, text, isDraft) {
 }
 
 
-
-// function getNextEmailId(emailId) {
-//     var idx = gEmail.findIndex(email => email.id === emailId);
-//     idx++;
-//     if (idx === gEmail.length) idx = 0;
-
-//     return gEmail[idx].id;
-// }
-
-// function _timeAtSend() {
-//     let timeAt = '' + new Date();
-//     return timeAt.substring(16, 21)
-// }
-
-
 function getNextPrevEmail(emailId) {
     let idx = gEmails.findIndex(email => email.id === emailId);
     let nextIndex = idx + 1;

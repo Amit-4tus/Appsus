@@ -94,6 +94,11 @@
         padding-top: 20px;
     }
     
+    .homePageTitle {
+        color: black;
+        font-size: 40px;
+    }
+    
     @media (max-width:600px) {
         .header a {
             font-size: 18px;
