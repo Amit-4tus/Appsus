@@ -16,7 +16,7 @@
     }
     
     .carousel-caption {
-        bottom: 100px !important;
+        bottom: 10px !important;
         color: #162f5c !important;
         padding-bottom: 100px !important;
     }
@@ -122,5 +122,8 @@
     @media (max-width:600px) {
         .header a {
             font-size: 18px;
+        }
+        .header nav {
+            margin-right: 10px;
         }
     }
