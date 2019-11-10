@@ -14,7 +14,9 @@ export default {
                 <input v-if="type === 'image' || type === 'audio' || type === 'video'" type="text" placeholder="File URL" required v-model="keepData.extra">
                 <textarea v-if="type === 'text'" rows="4" cols="50" required v-model="keepData.extra"></textarea>
                 <input type="submit" value="Submit" @click="addKeep">
+                <button @click="cancel">Cancel</button>
             </form>
+
 
             <div class="screen new-keep-screen" @click="cancel"></div>
         </section>

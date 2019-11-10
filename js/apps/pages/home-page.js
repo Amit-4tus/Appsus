@@ -52,11 +52,11 @@ export default {
           <img src="img/emailPic.png" class="mb-3" />
           <h4>misterEmail</h4>
         </router-link>
-        <router-link to="/book-app/bookApp">
+        <router-link to="/keep-app/main">
           <img src="img/keeppic.png" class="mb-3" />
           <h4>missKeep</h4>
         </router-link>
-        <router-link to="/keep-app/main">
+        <router-link to="/book-app/bookApp">
           <img src="img/bookpic.png" class="mb-3">
           <h4>missBook</h4>
         </router-link>
