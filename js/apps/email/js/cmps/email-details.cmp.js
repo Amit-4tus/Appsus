@@ -14,7 +14,7 @@ export default {
                     <li v-if="email" class="emailFullText">{{email.text}}</li>
         </ul>
         <div class="nextPrev">
-             <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next">  <i  @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt trash"> </i></router-link>
+             <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next">  <i  @click="deleteOrAddEmail('removed')" class="fas fa-trash-alt trash"> </i></router-link>
               <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.prev"><i class="fas fa-arrow-alt-circle-left nextPrevIcon"></i></router-link>
             <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next"><i class="fas fa-arrow-alt-circle-right nextPrevIcon"></i></router-link>
         </div>

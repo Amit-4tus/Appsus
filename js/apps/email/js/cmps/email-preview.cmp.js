@@ -35,9 +35,9 @@ export default {
                                 <i v-if="email.isRead" title="Unread" class="fas fa-envelope-open-text"></i>
                                 <i v-if="!email.isRead" class="fas fa-envelope"></i>
                                 </span>
-                          <span class="bcgColorIcon">
-                            <i v-if="!email.isTrash" title="Delete" @click="deleteOrAddEmail('removed')" class="fas fa-trash-alt"></i>
-                            <i v-if="email.isTrash" title="Restore" @click="deleteOrAddEmail('added')" class="fas fa-trash-restore"></i>
+                          <span v-if="!email.isTrash" class="bcgColorIcon">
+                            <i  title="Delete" @click="deleteOrAddEmail('removed')" class="fas fa-trash-alt"></i>
+                            <!-- <i v-if="email.isTrash" title="Restore" @click="deleteOrAddEmail('added')" class="fas fa-trash-restore"></i> -->
                           </span>
                           <span v-if="!email.isTrash"  class="bcgColorIcon">
                             <i title="Send Note" @click="sendToKeep()" class="far fa-sticky-note"></i>
@@ -67,10 +67,10 @@ export default {
             eventBus.$emit('email', this.emailId);
         },
         deleteOrAddEmail(removeOrAdd) {
-            emailService.getRemoveOrAdd(this.email, removeOrAdd)
+            emailService.removeEmail(this.email, removeOrAdd)
                 .then(() => {
                     const msg = {
-                        txt: `Email ${this.emailChange} Succefully`,
+                        txt: `Email removed Succefully`,
                         type: 'success'
                     }
                     eventBus.$emit('show-msg', msg);
@@ -82,6 +82,7 @@ export default {
                     }
                     eventBus.$emit('show-msg', msg);
                 })
+            this.isReadEmail = !this.isReadEmail;
             eventBus.$emit('updateEmails', this.email.id);
         },
         changeStarred(email) {
@@ -111,7 +112,14 @@ export default {
                 text: this.currEmail.text,
                 type: 'email'
             }
-            eventBus.$emit('email-keep-added', email);
+            eventBus.$emit('email-keep-added', email)
+
+            const msg = {
+                txt: `Email sent to keep Succefully`,
+                type: 'success'
+            }
+            eventBus.$emit('show-msg', msg);
+
         }
     },
     created() {

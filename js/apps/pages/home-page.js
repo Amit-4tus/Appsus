@@ -16,22 +16,22 @@ export default {
       <div class="carousel-item active">
         <img src="img/remember.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h2>Never Forget A Thing</h2>
-          <h5>Our keep-app will make sure you never miss a single thing</h5>
+          <h2 class="titleHomePage">Never Forget A Thing</h2>
+          <h5 class="subtitleHomePage">Our keep-app will make sure you never miss a single thing</h5>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/email.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h2>The Ability To Send</h2>
-          <h5>Use our groundbreaking technology that will alow you to send emails to yourself</h5>
+          <h2 class="titleHomePage">The Ability To Send</h2>
+          <h5 class="subtitleHomePage">Use our groundbreaking technology that will alow you to send emails to yourself</h5>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/imagination.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h2>Read. Imagine. Live.</h2>
-          <h5>With our book shop you will find books to nourish you mind and creativity</h5>
+          <h2 class="titleHomePage">Read. Imagine. Live.</h2>
+          <h5 class="subtitleHomePage">With our book shop you will find books to nourish you mind and creativity</h5>
         </div>
       </div>
     </div>
