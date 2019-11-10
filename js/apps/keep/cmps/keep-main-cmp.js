@@ -8,7 +8,7 @@ export default {
     template: `
         <section class="keep-main">
             <keeps-list></keeps-list>
-            <new-keep v-if="newKeepType" :type="newKeepType"></new-keep>
+            <new-keep v-if="isCreatingNewKeep" :type="newKeepType"></new-keep>
             <adding-btns></adding-btns>
         </section>
     `,
@@ -16,20 +16,28 @@ export default {
     data() {
         return {
             newKeepType: null,
+            isCreatingNewKeep: false,
         };
     },
     
     created() {
         eventBus.$on('addKeep', this.addKeep);
         eventBus.$on('newKeepMade', this.newKeepFinished);
+        eventBus.$on('cancel', this.cancel);
     },
 
     methods: {
         addKeep(type) {
+            this.isCreatingNewKeep = true;
             this.newKeepType = type;
         },
         newKeepFinished() {
             this.newKeepType = null;
+            this.isCreatingNewKeep = false;
+        },
+        cancel() {
+            this.newKeepType === null;
+            this.isCreatingNewKeep = false;
         },
     },
 

@@ -85,7 +85,6 @@ export default {
                 this.setColor(currKeep);
                 this.setLabels(currKeep);
                 this.currKeep = currKeep
-                // return currKeep;
             });
         },
         updateLabels(updtdLabels) {

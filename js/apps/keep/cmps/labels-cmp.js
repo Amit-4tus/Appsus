@@ -9,7 +9,7 @@ export default {
         <section class="labels">
             Labels:
             <div v-for="label in allLabels">
-                    <input type="checkbox" :value="label" v-model="checkedLabels.includes(label) "@change="updateLabel">{{label}}
+                    <input type="checkbox" :value="label" v-model="checkedLabels.includes(label)" @change="updateLabel">{{label}}
             </div>
         </section>
     `,
@@ -22,8 +22,7 @@ export default {
     },
 
     created() {
-        this.allLabels = this.keepData.labels;
-        this.allLabels = keepService.getAllLabels();
+        this.getLabelsFromService();
         this.checkedLabels = this.keepData.labels;
     },
 
@@ -33,6 +32,9 @@ export default {
         },
         updateAtParentCmp() {
             this.$emit('labelsChanged', this.checkedLabels);
+        },
+        getLabelsFromService() {
+            this.allLabels = keepService.getLabels();
         },
     },
 };

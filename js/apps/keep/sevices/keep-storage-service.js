@@ -1,6 +1,13 @@
 'use strict';
 
-export default {getKeeps, addKeep, deleteKeep, updateKeep, getAllLabels};
+export default {
+    getKeeps,
+    addKeep,
+    deleteKeep,
+    updateKeep,
+    updateLabels,
+    getLabels
+};
 
 window.currId = 101;
 
@@ -14,7 +21,6 @@ function getKeeps() {
 };
 
 function addKeep(newKeepData) {
-    if (!newKeepData.id) newKeepData.id = localStorage.KeepsCurrId;
     let keeps = JSON.parse(localStorage.getItem('gKeeps'));
     keeps.unshift(newKeepData);
     localStorage.setItem('gKeeps', JSON.stringify(keeps));
@@ -35,9 +41,13 @@ function updateKeep(updtdKeepData) {
     localStorage.setItem('gKeeps', JSON.stringify(keeps));
 };
 
-function getAllLabels() {
-    if (!localStorage.getItem('gKeepLabels')) localStorage.setItem('gKeepLabels', JSON.stringify(gLabels));
-    return JSON.parse(localStorage.getItem('gKeepLabels'));
+function getLabels() {
+    return JSON.parse(localStorage.getItem('keepLabels'));
+};
+
+function updateLabels(labels) {
+    let labelsStr = JSON.stringify(labels);
+    localStorage.setItem('keepLabels', labelsStr);
 };
 
 const gLabels = ['personal', 'work'];

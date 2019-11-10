@@ -110,10 +110,10 @@ export default {
             return tempTime.substring(16, 21) + date
         },
         sendToKeep() {
-            const msg = {
-                sender: email.name,
-                title: email.subject,
-                text: email.text,
+            const email = {
+                sender: this.currEmail.name,
+                title: this.currEmail.subject,
+                text: this.currEmail.text,
                 type: 'email'
             }
             eventBus.$emit('email-keep-added', email);
