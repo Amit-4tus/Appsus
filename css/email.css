@@ -68,10 +68,11 @@ a {
 }
 
 .email-nav {
+    display: flex;
     width: 25%;
     /* border: 1px solid black; */
     max-height: 100vh;
-    background-color: rgb(228, 225, 225);
+    /* background-color: rgb(228, 225, 225); */
 }
 
 .email-list {
@@ -446,20 +447,28 @@ i.fas:focus {
     .emails-list-container {
         max-width: 100%;
         margin: 0 5px;
-        /* padding: 5% 0; */
+        padding: 5% 0;
     }
 }
 
-@media (max-width:500px) {
+@media (max-width:600px) {
     .emails-list-container {
         max-width: 100%;
         margin: 0 5px;
+        padding-top: 0;
         /* padding: 5% 0; */
     }
     .email-main-container {
         /* max-height: 85vh; */
         display: flex;
         flex-direction: column;
+    }
+    .saidLinks {
+        width: 92%;
+        border-radius: 20px;
+        height: 45px;
+        color: #5f6368;
+        padding-left: 20px;
     }
     /* .asaid-nav-bar {
         flex-direction: row;
@@ -479,7 +488,7 @@ i.fas:focus {
         position: fixed;
         top: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.9);
         border-left: 1px solid rgba(153, 153, 153, 0.5);
         transform: translate(100%, 0);
         transition: transform .6s;
@@ -514,4 +523,8 @@ i.fas:focus {
         margin: 0;
         padding: 0;
     } */
+    .email-nav {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }
