@@ -1,5 +1,5 @@
 .email-main-container {
-    max-height: 85vh;
+    max-height: 80vh;
     display: flex;
     flex-direction: row;
 }
@@ -69,10 +69,20 @@ a {
 
 .email-nav {
     display: flex;
-    width: 25%;
+    width: 40%;
     /* border: 1px solid black; */
     max-height: 100vh;
     /* background-color: rgb(228, 225, 225); */
+}
+
+
+/* .book-filter-container {
+    width: 100% !important;
+} */
+
+.addNewEmail {
+    width: 100%;
+    height: 100%;
 }
 
 .email-list {
@@ -250,6 +260,12 @@ a {
     margin-top: 15px;
 }
 
+.misterEmail {
+    margin-top: 10px;
+    padding-left: 20px;
+    color: rgb(216, 195, 8)
+}
+
 
 /* nav {
     height: 100%;
@@ -262,11 +278,12 @@ a {
     align-items: flex-start;
     align-content: center;
     height: 75vh;
-    padding: 50px 0;
+    padding: 0;
+    padding-bottom: 50px;
     margin-right: 0;
     font-size: 20px;
     background-color: rgba(242, 245, 245, 0.8);
-    /* width: 80%; */
+    width: 100%;
     /* margin-top: 35px; */
 }
 
@@ -290,7 +307,7 @@ a {
     justify-content: space-between;
     flex-direction: column;
     margin: 10px 20px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     padding-bottom: 20px;
     /* border: none; */
 }
@@ -414,10 +431,15 @@ i.fas:focus {
     margin-left: 10px;
 }
 
+.emails-list {
+    padding: 0;
+}
+
 .emails-list-container {
     max-width: 100%;
     margin: 0 50px;
     padding: 5% 0;
+    padding-top: 0;
 }
 
 #menuBtn {

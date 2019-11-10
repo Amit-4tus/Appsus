@@ -20,7 +20,7 @@ export default {
    <div class="screen" :class="{openMenu:openMenu}" @click="getOpenMenu"></div>
    <button id="menuBtn" :class="{openMenu:openMenu}"  @click="getOpenMenu">☰</button>
    <div class="asaid-nav-bar">
-
+        <h2 class="misterEmail">MisterEmail</h2>
        <router-link  @click.native="getOpenMenu" to="/emailApp/compose"><button class="compose">
        <i class="fas fa-plus plus"></i>  Compose</button></router-link>
         <router-link   @click.native="getOpenMenu" class="saidLinks" to="/emailApp/email/inbox">
