@@ -46,7 +46,7 @@ export default {
                       </span>
                     </li>
                     <li class="emailName"> {{email.name}}       <{{email.email}}></li>
-                    <li class="emailSubject">{{email.text}}</li>
+                    <li class="emailtxtBody">{{email.text}}</li>
              </ul>
        </section>
      `,
@@ -111,9 +111,9 @@ export default {
         },
         sendToKeep() {
             const email = {
-                sender: currEmail.name,
-                title: currEmail.subject,
-                text: currEmail.text,
+                sender: this.currEmail.name,
+                title: this.currEmail.subject,
+                text: this.currEmail.text,
                 type: 'email'
             }
             eventBus.$emit('email-keep-added', email);
@@ -121,6 +121,7 @@ export default {
     },
     created() {
         this.currEmail = this.email;
+        this.$emit('filtered', this.filterBy)
 
     },
     computed: {

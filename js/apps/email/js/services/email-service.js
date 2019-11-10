@@ -49,7 +49,7 @@ function getRemoveOrAdd(currEmail, removeOrAdd) {
     let removeFrom;
     let addTo;
     console.log(removeOrAdd);
-    debugger
+    // debugger
     if (removeOrAdd === 'removed') {
         currEmail.isTrash = true;
         removeFrom = gEmail;
@@ -61,11 +61,13 @@ function getRemoveOrAdd(currEmail, removeOrAdd) {
     }
     let idx = removeFrom.findIndex(email => email.id === currEmail.id);
     console.log(idx);
-    console.log(removeFrom);
+
 
     if (idx !== -1) removeFrom.splice(idx, 1)
     addTo.unshift(currEmail)
-
+    console.log('remove from', removeFrom);
+    console.log('gemail', gEmail);
+    console.log('gemail', gTrashEmail);
     utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmail)
     utilService.store(STORAGE_KEY_EMAILS, gEmail)
     return Promise.resolve();

@@ -15,23 +15,27 @@ export default {
     template: `
    <section class="email-main-container">
        
-   <nav class="email-nav">
+ 
+   <nav class="email-nav" >
+   <div class="screen" :class="{openMenu:openMenu}" @click="getOpenMenu"></div>
+   <button id="menuBtn" :class="{openMenu:openMenu}"  @click="getOpenMenu">☰</button>
    <div class="asaid-nav-bar">
-       <router-link to="/emailApp/compose"><button class="compose">
+
+       <router-link  @click.native="getOpenMenu" to="/emailApp/compose"><button class="compose">
        <i class="fas fa-plus plus"></i>  Compose</button></router-link>
-        <router-link class="saidLinks" to="/emailApp/email/inbox">
+        <router-link   @click.native="getOpenMenu" class="saidLinks" to="/emailApp/email/inbox">
         <i class="fas fa-inbox iconLinks"></i>
         inbox</router-link>
-        <router-link class="saidLinks" to="/emailApp/email/starred">
+        <router-link  @click.native="getOpenMenu" class="saidLinks" to="/emailApp/email/starred">
         <i  class="fas fa-star iconLinks"></i>
         starred</router-link>
-        <router-link class="saidLinks" to="/emailApp/email/SendMail">
+        <router-link  @click.native="getOpenMenu" class="saidLinks" to="/emailApp/email/SendMail">
         <i class="fas fa-paper-plane iconLinks"></i>
         Send Mail</router-link>
-        <router-link class="saidLinks" to="/emailApp/email/Drafts">
+        <router-link @click.native="getOpenMenu" class="saidLinks" to="/emailApp/email/Drafts">
         <i class="fab fa-firstdraft iconLinks"></i>
         Drafts</router-link>
-        <router-link class="saidLinks" to="/emailApp/email/Trash">
+        <router-link  @click.native="getOpenMenu" class="saidLinks" to="/emailApp/email/Trash">
         <i class="fas fa-trash iconLinks"></i>
         Trash</router-link>
         <email-status></email-status>
@@ -43,9 +47,16 @@ export default {
 
    </section>
     `,
+    data() {
+        return {
+            openMenu: false
+        }
+    },
 
     methods: {
-
+        getOpenMenu() {
+            this.openMenu = !this.openMenu
+        }
     },
     computed: {
         // selectemail() {
