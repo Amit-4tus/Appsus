@@ -2,37 +2,15 @@ li {
     list-style: none;
 }
 
-.booksNav {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    height: 40px;
-    background-color: #59719b;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    color: white;
-}
-
-.booksNav a {
-    margin-left: 10px;
-}
-
-.booksNav a:hover {
-    color: brown;
-}
-
 .card {
     height: 300px;
     width: 200px;
     cursor: pointer;
     font-weight: bold;
     text-align: center;
-    background-color: #29487d !important;
+    background-color: #29487d;
     color: white;
     border-radius: 10px;
-    margin-bottom: 10px;
 }
 
 h1.title {
@@ -137,7 +115,7 @@ img {
     flex-direction: row;
     align-content: center;
     justify-content: center;
-    /* margin-top: 50px; */
+    margin-top: 20px;
 }
 
 .book-container {

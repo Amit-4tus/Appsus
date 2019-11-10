@@ -11,7 +11,6 @@ import bookFilter from './book-filter.cmp.js';
 export default {
     template: `
    <div>
-
         <book-filter v-if="!isBooksShown" @filtered="setFilter"></book-filter> 
         <book-list v-if="!isBooksShown" :books="booksToShow" @selected="selectBook"></book-list>
         <book-details v-if="isBooksShown" :book="selectedBook" :toShow="showAllBooks"></book-details>
@@ -27,7 +26,6 @@ export default {
     },
     created() {
         this.books = bookService.getBooks()
-
     },
     methods: {
         selectBook(bookId) {

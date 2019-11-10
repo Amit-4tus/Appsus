@@ -1,13 +1,13 @@
 export default {
     props: ['book'],
     template: `
-    <li class="card" >
-    <!-- <router-link :to="dogDetailsLink"> -->
-    <div class="title"> {{book.title}}</div>
-         <img class="image" :src="book.thumbnail"/>
-         <div>Price: {{book.listPrice.amount}}{{currency}} </div>
-         <!-- </router-link> -->
-     </li>
+        <li class="card" >
+            <!-- <router-link :to="dogDetailsLink"> -->
+            <div class="title"> {{book.title}}</div>
+                <img class="image" :src="book.thumbnail"/>
+                <div>Price: {{book.listPrice.amount}}{{currency}} </div>
+                <!-- </router-link> -->
+        </li>
      `,
 
     computed: {
