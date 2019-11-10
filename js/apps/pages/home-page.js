@@ -43,23 +43,23 @@ export default {
     </a>
   </div>
 </div>
-<!-- <div class="container-fluid bg-dark text-light p-4 text-center">
-        <h1 class="my-4">Our Apps</h1>
+<div class="container-fluid bg-dark text-light p-4 text-center">
+        <h1 class="titleApps">Our Apps</h1>
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <img src="img/award-1.png" class="mb-3" />
-                <h4>Best photo of the year</h4>
+            <div>
+                <img src="img/emailPic.png" class="mb-3" />
+                <h4>misterEmail</h4>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <img src="img/award-2.png" class="mb-3" />
-                <h4>Best couple photo</h4>
+            <div >
+                <img src="img/keeppic.png" class="mb-3" />
+                <h4>missKeep</h4>
             </div>
-            <div class="col-12 col-lg-4">
-                <img src="img/award-3.png" class="mb-3">
-                <h4>Editors choice</h4>
+            <div >
+                <img src="img/bookpic.png" class="mb-3">
+                <h4>missBook</h4>
             </div>
         </div>
-    </div> -->
+    </div>
         </section>
     `,
 };

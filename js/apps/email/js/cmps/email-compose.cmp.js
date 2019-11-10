@@ -11,15 +11,13 @@ export default {
                <input type="text" placeholder="Bcc"  />
                <input type="text" placeholder="Subject" v-model="newEmail.title"/>
                <span>
-               <textarea class="emailBody" rows="20" v-model="newEmail.text"> </textarea> 
-               <router-link to="/emailApp/email/inbox">
-               <button @click="sendEmail(false)" class="sendEmailBtn">Send</button>
-               <i @click="sendEmail(true)" title="Draft" class="fab fa-firstdraft draftIcon"></i>
-               <i @click="deleteCompose" title="Delete" class="fas fa-trash-alt deleteCompose"></i>
-               </router-link>
-</span>
-               
-             
+                    <textarea class="emailBody" rows="20" v-model="newEmail.text"> </textarea> 
+                    <router-link to="/emailApp/email/inbox">
+                    <button @click="sendEmail(false)" class="sendEmailBtn">Send</button>
+                    <i @click="sendEmail(true)" title="Draft" class="fab fa-firstdraft draftIcon"></i>
+                    <i @click="deleteCompose" title="Delete" class="fas fa-trash-alt deleteCompose"></i>
+                    </router-link>
+                 </span>    
          </form>
     </section>
     `,
@@ -30,24 +28,20 @@ export default {
                 title: '',
                 text: '',
             },
-
         }
     },
     methods: {
         sendEmail(isDraft) {
             if (isDraft) this.newEmail.title = '[Draft]' + this.newEmail.title
             emailService.sendMail(this.newEmail.email, this.newEmail.title, this.newEmail.text, isDraft)
-
         },
         deleteCompose() {
             this.newEmail.email = '';
             this.newEmail.title = '';
             this.newEmail.text = '';
-
         },
     },
     created() {
-
         eventBus.$on('subject', (replyEmail) => {
             this.newEmail.title = replyEmail.title;
             this.newEmail.email = replyEmail.emailTo

@@ -14,7 +14,6 @@ export default {
             readPrecent: null
         }
     },
-
     created() {
         this.readPrecent = emailService.getReadPrecent();
         eventBus.$on('readPrecent', (readPrecent) => {

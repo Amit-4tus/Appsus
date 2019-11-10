@@ -222,7 +222,7 @@ a {
 }
 
 .search {
-    height: 20px;
+    height: 35px;
     border-radius: 8px;
     outline: none;
     background-color: rgb(224, 224, 224);
@@ -285,13 +285,10 @@ a {
 
 .emailFull {
     display: flex;
-    /* height: ; */
     justify-content: space-between;
     flex-direction: column;
     margin: 10px 20px;
-    /* border: 1px black solid; */
     padding-bottom: 20px;
-    /* border: none; */
 }
 
 .emailFullSubject {
@@ -419,8 +416,8 @@ i.fas:focus {
 
 .emails-list-container {
     max-width: 100%;
-    margin: 0 50px;
-    padding: 5% 0;
+    margin: 0;
+    padding: 0;
     padding-top: 0;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
@@ -447,6 +444,37 @@ i.fas:focus {
 .screen.openMenu {
     visibility: visible;
     opacity: 1;
+}
+
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    cursor: pointer;
+    width: 100px !important;
+    height: 35px !important;
+}
+
+.custom-select select {
+    display: none;
+    /*hide original SELECT element: */
+}
+
+.select-selected {
+    background-color: DodgerBlue;
+}
+
+
+/* Style the arrow inside the select element: */
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
 }
 
 
