@@ -110,7 +110,7 @@ export default {
             return tempTime.substring(16, 21) + date
         },
         sendToKeep() {
-            const msg = {
+            const email = {
                 sender: currEmail.name,
                 title: currEmail.subject,
                 text: currEmail.text,
