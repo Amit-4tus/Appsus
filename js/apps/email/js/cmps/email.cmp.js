@@ -2,19 +2,21 @@
 import { emailService } from '../services/email-service.js'
 import emailList from './email-list.cmp.js';
 import emailFilter from './email-filter.cmp.js';
-import emailMsg from './email-msg.cmp.js';
+import userMsg from '../../../cmps/user-msg.cmp.js';
 
 export default {
     template: `
    <div>
+      
        <section class="listFilter">
            <email-filter @filtered="setFilter"></email-filter> 
-           <select v-model="sortBy">
+           <select class="sortList" v-model="sortBy">
              <option value='' selected>Sort By</option>
                    <option value='title'>Title</option>
                    <option value='time'>Time</option>
 </select>
-           <email-msg></email-msg>
+
+           
            <div>{{unreadEmails}} <i class="fas fa-envelope-open-text"></i></div>
        </section>
        <email-list :emailsForShow="emailsToShow"></email-list>
@@ -67,12 +69,8 @@ export default {
     },
     watch: {
         '$route.params.type' () {
-            // debugger
             this.emails = emailService.getEmails()
-            console.log(this.emails);
             let typePage = this.$route.params.type;
-            console.log(typePage);
-
             let email;
             if (typePage === 'Trash') this.emails = emailService.getTrashEmails()
             if (typePage === 'starred') {
@@ -92,13 +90,14 @@ export default {
                     email.isDraft !== true)
                 this.emails = email;
             }
-            console.log(email);
         },
         sortBy() {
-            if (this.sortBy === 'title') this.emails.sort((a, b) => (a.email.subject > b.email.subject) ? 1 : -1)
-            else if (this.sortBy === 'time') this.emails.sort((a, b) => (a.email.sentAt > b.email.sentAt) ? 1 : -1)
-            else this.emails = emailService.getEmails()
-
+            // let sortEmails = emailService.getEmails();
+            if (this.sortBy === 'title') this.emails.sort((a, b) => {
+                return (a.subject.toLowerCase() > b.subject.toLowerCase()) ? 1 : -1
+            })
+            else if (this.sortBy === 'time') this.emails.sort((a, b) => (a.sentAt > b.sentAt) ? 1 : -1)
+                // else this.emails = sortEmails
         }
     },
 
@@ -106,6 +105,7 @@ export default {
     components: {
         emailFilter,
         emailList,
-        emailMsg
+        userMsg,
+        emailService
     }
 }

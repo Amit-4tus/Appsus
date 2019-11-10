@@ -1,6 +1,7 @@
 'use strict'
 
 import { emailService } from '../services/email-service.js'
+import { eventBus } from '../../../../main-services/event-bus-service.js';
 
 export default {
     template: `
@@ -16,8 +17,11 @@ export default {
 
     created() {
         this.readPrecent = emailService.getReadPrecent();
+        eventBus.$on('readPrecent', (readPrecent) => {
+            console.log('UserMsg got new Msg!');
+            this.readPrecent = readPrecent;
+        })
+
     },
-    // watch: {
-    //     this.readPrecent = emailService.getReadPrecent();
-    // }
+
 }

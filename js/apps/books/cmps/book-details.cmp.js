@@ -1,4 +1,4 @@
-import { bookService } from '../services/BookService.js';
+import { bookService } from '../services/BookService.js'
 
 import longText from './long-text.cmp.js';
 import reviewAdd from './review-add.cmp.js';
@@ -24,7 +24,7 @@ export default {
             <div>Language : {{book.language}}</div>
             <div v-bind:class="bookDetailsClass">Price: {{book.listPrice.amount}} {{book.listPrice.currencyCode}}</div>
             <long-text v-if="readMore" :txt="book.description"></long-text>
-            <router-link class="nextBook" :to="'/book/details/' + nextBookId">NEXT BOOK &gt; </router-link>
+            <router-link class="nextBook" :to="'/book-app/bookApp/details/' + nextBookId">NEXT BOOK &gt; </router-link>
         </div>
 </div>
                     
@@ -53,7 +53,6 @@ export default {
             book: null,
             review: {},
             nextBookId: ''
-
         }
     },
 
@@ -113,7 +112,7 @@ export default {
         this.loadBook();
         console.log('this.$route.params', this.$route.params.id);
         const bookId = this.$route.params.id;
-        console.log('DogDetails Created, dogId:', bookId);
+        console.log('DogDetails Created, bookId:', bookId);
         bookService.getBookId(bookId)
             .then(book => this.book = book)
     },

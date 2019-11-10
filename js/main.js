@@ -1,6 +1,7 @@
 'use strict';
 
 import theRouter from './main-routes.js'
+import userMsg from './apps/cmps/user-msg.cmp.js'
 
 let root = {
     el: '#root',
@@ -21,6 +22,9 @@ let root = {
             <router-view></router-view>
         </section>
     `,
+    components: {
+        userMsg,
+    },
 };
 
 new Vue(root);

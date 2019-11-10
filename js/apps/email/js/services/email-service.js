@@ -1,5 +1,6 @@
 'use strict';
 import { utilService } from '../../../../main-services/util-service.js'
+import { eventBus } from '../../../../main-services/event-bus-service.js';
 
 
 export const emailService = {
@@ -10,7 +11,8 @@ export const emailService = {
     changeEmailParameter,
     getReadPrecent,
     getNextPrevEmail,
-    getTrashEmails
+    getTrashEmails,
+    // removeEmail
 }
 
 const STORAGE_KEY_EMAILS = 'EMAILS';
@@ -46,7 +48,9 @@ function getEmailById(emailId) {
 function getRemoveOrAdd(currEmail, removeOrAdd) {
     let removeFrom;
     let addTo;
-    if (removeOrAdd === 'remove') {
+    console.log(removeOrAdd);
+    debugger
+    if (removeOrAdd === 'removed') {
         currEmail.isTrash = true;
         removeFrom = gEmail;
         addTo = gTrashEmail
@@ -56,10 +60,14 @@ function getRemoveOrAdd(currEmail, removeOrAdd) {
         addTo = gEmail
     }
     let idx = removeFrom.findIndex(email => email.id === currEmail.id);
+    console.log(idx);
+    console.log(removeFrom);
+
     if (idx !== -1) removeFrom.splice(idx, 1)
     addTo.unshift(currEmail)
-    utilService.store(STORAGE_KEY_EMAILS, gEmail)
+
     utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmail)
+    utilService.store(STORAGE_KEY_EMAILS, gEmail)
     return Promise.resolve();
 }
 
@@ -70,13 +78,17 @@ function changeEmailParameter(currEmail, parametr) {
     currEmail[parametr] = !currEmail[parametr];
     if (idx !== -1) gEmail.splice(idx, 1, currEmail)
     utilService.store(STORAGE_KEY_EMAILS, gEmail)
+
+    if (parametr === 'isRead') {
+        let readPrecent = getReadPrecent()
+        eventBus.$emit('readPrecent', readPrecent);
+    }
+
     return Promise.resolve();
 }
 
 function sendMail(email, subject, text, isDraft) {
-    console.log(isDraft);
-
-    let newEmail = _createEmail(utilService.makeId(), 'tomi', email, subject, _timeAtSend(), text, false, false, false, isDraft, false)
+    let newEmail = _createEmail(utilService.makeId(), 'tomi', email, subject, Date.now(), text, false, false, false, isDraft, false)
     gEmail.unshift(newEmail)
     utilService.store(STORAGE_KEY_EMAILS, gEmail)
 }
@@ -91,10 +103,10 @@ function sendMail(email, subject, text, isDraft) {
 //     return gEmail[idx].id;
 // }
 
-function _timeAtSend() {
-    let timeAt = '' + new Date();
-    return timeAt.substring(16, 21)
-}
+// function _timeAtSend() {
+//     let timeAt = '' + new Date();
+//     return timeAt.substring(16, 21)
+// }
 
 
 function getNextPrevEmail(emailId) {
@@ -143,10 +155,10 @@ function createTrashEmails() {
     gTrashEmail = utilService.load(STORAGE_KEY_TRASH_EMAILS)
     if (!gTrashEmail || gTrashEmail.length === 0) {
         gTrashEmail = [
-            _createEmail(utilService.makeId(), 'avi', 'dgjdhujhg@yahoo.com', 'Wassap with Vue?', '11:24', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
-            _createEmail(utilService.makeId(), 'koki', 'koki@outlook.com', 'hi', '07:04', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
-            _createEmail(utilService.makeId(), 'bobi', 'bodsgfhgbi@gmail.com', 'hola', '06:54', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
-            _createEmail(utilService.makeId(), 'momi', 'moasdfgmi@gmail.com', 'bey', '23:44', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
+            _createEmail(utilService.makeId(), 'avi', 'dgjdhujhg@yahoo.com', 'Wassap with Vue?', 1573228869482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
+            _createEmail(utilService.makeId(), 'koki', 'koki@outlook.com', 'hi', 1573298669482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
+            _createEmail(utilService.makeId(), 'bobi', 'bodsgfhgbi@gmail.com', 'yoyo', 1573198869482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
+            _createEmail(utilService.makeId(), 'momi', 'moasdfgmi@gmail.com', 'how r u?', 1575298369482, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', true, false, false, false, true),
 
         ]
         utilService.store(STORAGE_KEY_TRASH_EMAILS, gTrashEmail)

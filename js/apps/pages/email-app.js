@@ -34,12 +34,9 @@ export default {
         <router-link class="saidLinks" to="/emailApp/email/Trash">
         <i class="fas fa-trash iconLinks"></i>
         Trash</router-link>
+        <email-status></email-status>
          </div>
-         <email-status></email-status>
-          <!-- <router-link to="email-app/email-details"><i class="fas fa-arrows-alt"></i>
-         </router-link> -->
       </nav>
-      <!-- <email-list class="email-list" :emails="emailsToShow" ></email-list> -->
               <router-view class="router-email"></router-view>
              
               
