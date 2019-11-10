@@ -68,5 +68,12 @@
     }
     
     .user-msg {
-        background-color: rgb(216, 195, 8) padding: 5px;
+        background-color: rgb(216, 195, 8);
+        padding: 5px;
+    }
+    
+    @media (max-width:600px) {
+        .header a {
+            font-size: 18px;
+        }
     }

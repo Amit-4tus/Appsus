@@ -35,6 +35,9 @@ export default {
             email.isDraft !== true)
         this.emails = email;
         this.emailsForShow = emailService.getEmails()
+        eventBus.$on('updateEmails', (emails) => {
+            this.emails = emailService.getEmails()
+        })
     },
     methods: {
         setFilter(filterBy) {

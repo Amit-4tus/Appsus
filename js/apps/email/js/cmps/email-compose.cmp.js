@@ -51,7 +51,7 @@ export default {
         eventBus.$on('subject', (replyEmail) => {
             this.newEmail.title = replyEmail.title;
             this.newEmail.email = replyEmail.emailTo
-            this.newEmail.text = replyEmail.text
+            this.newEmail.text = '\n' + replyEmail.text
         })
 
     }

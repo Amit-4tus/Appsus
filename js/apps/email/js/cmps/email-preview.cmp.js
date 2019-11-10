@@ -62,16 +62,12 @@ export default {
         readEmail() {
             this.isReadEmail = !this.isReadEmail;
             this.currEmail.isRead = false
-                // setTimeout()
             emailService.changeEmailParameter(this.currEmail, 'isRead');
         },
         showEmail() {
             eventBus.$emit('email', this.emailId);
         },
         deleteOrAddEmail(removeOrAdd) {
-            // this.emailChange = removeOrAdd;
-            // console.log(removeOrAdd);
-            // this.currEmail = this.email;
             emailService.getRemoveOrAdd(this.email, removeOrAdd)
                 .then(() => {
                     const msg = {
@@ -87,6 +83,7 @@ export default {
                     }
                     eventBus.$emit('show-msg', msg);
                 })
+            eventBus.$emit('updateEmails', 'emails');
         },
         changeStarred(email) {
             emailService.changeEmailParameter(email, 'isStarred')
@@ -106,7 +103,6 @@ export default {
         },
         getCurrTime(sentAt) {
             let tempTime = new Date(sentAt) + '';
-            let date = tempTime.substring(3, 10)
             return tempTime.substring(16, 21)
         },
         sendToKeep() {

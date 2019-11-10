@@ -478,6 +478,11 @@ i.fas:focus {
     opacity: 1;
 }
 
+
+/* .fa-envelope-open-text {
+    color: #314568;
+} */
+
 @media (max-width:900px) {
     .emails-list-container {
         max-width: 100%;

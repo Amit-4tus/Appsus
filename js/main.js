@@ -21,7 +21,7 @@ let root = {
                 </nav>
             </div>
             <router-view></router-view>
-            <footer class="footer"></footer>
+            <!-- <footer class="footer"></footer> -->
         </section>
     `,
     components: {
