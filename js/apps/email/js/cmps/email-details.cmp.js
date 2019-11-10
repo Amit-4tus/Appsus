@@ -5,15 +5,18 @@ import { emailService } from '../services/email-service.js'
 export default {
     template: `
     <section class="emailFull">
-        <ul  v-if="email" class="email-body" >
+        <ul  v-if="email" class="email-Fullbody" >
+            <span class="emailFull-subjectLine">
             <li class="emailFullSubject"> {{email.subject}}  </li>
+            <li class="emailFullSendAt">{{getCurrTime(email.sentAt)}} </li>
+</span>
             <li class="emailFull-Name"><pre>{{email.name}}  <{{email.email}}></pre></li>
             <li v-if="email" class="emailFullText">{{email.text}}</li>
         </ul>
-        <div>
-            <i  @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt">
-            <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next"></router-link>
-            </i>
+        <div class="nextPrev">
+          
+            <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next">  <i  @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt trash">     </i></router-link>
+       
             <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.prev"><i class="fas fa-arrow-alt-circle-left nextPrevIcon"></i></router-link>
             <router-link class="Next Email" :to="'/emailApp/email/details/' + nextPrevEmailsEmail.next"><i class="fas fa-arrow-alt-circle-right nextPrevIcon"></i></router-link>
         </div>
@@ -43,6 +46,11 @@ export default {
             emailService.getRemoveOrAdd(this.currEmail, removeOrAdd)
             this.$router.go(-1)
         },
+        getCurrTime(sentAt) {
+            let tempTime = new Date(sentAt) + '';
+            let date = tempTime.substring(3, 15)
+            return tempTime.substring(16, 21) + date
+        }
     },
 
     watch: {
