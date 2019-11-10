@@ -32,7 +32,6 @@ a {
 
 .email:first-child {
     border-top: 0.5px solid rgb(190, 190, 190);
-    /* border-bottom: none; */
 }
 
 .email:hover {
@@ -44,8 +43,6 @@ a {
     border-top: none;
     padding: 10px;
     padding-top: 10px;
-    /* max-width: 80%; */
-    /* height: 100vh; */
 }
 
 .email-Fullbody {
@@ -57,15 +54,6 @@ a {
     background-color: rgba(229, 238, 238, 0.8);
 }
 
-
-/* .email li {
-    height: 30px;
-}
-
-.email-body{
-
-} */
-
 .screen {
     display: none;
 }
@@ -73,21 +61,13 @@ a {
 .email-main-container {
     display: flex;
     flex-direction: row;
-    /* border-top: black solid 1px; */
 }
 
 .email-nav {
     display: flex;
     width: 40%;
-    /* border: 1px solid black; */
     max-height: 100vh;
-    /* background-color: rgb(228, 225, 225); */
 }
-
-
-/* .book-filter-container {
-    width: 100% !important;
-} */
 
 .addNewEmail {
     width: 100% !important;
@@ -145,11 +125,6 @@ a {
 .starfill {
     color: rgb(158, 158, 17);
 }
-
-
-/* textarea {
-    z-index: -10;
-} */
 
 .newMessage {
     background-color: #202124;
@@ -241,8 +216,6 @@ a {
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    /* margin-left: 41px;
-    margin-top: 10px; */
     background-color: rgba(242, 245, 245, 0.8);
     height: 50px;
     padding: 0 40px;
@@ -253,7 +226,6 @@ a {
     border-radius: 8px;
     outline: none;
     background-color: rgb(224, 224, 224);
-    /* background: #f1f3f4; */
     border: 1px solid transparent;
     max-width: 200px;
     position: relative;
@@ -263,7 +235,6 @@ a {
 .emailSubject {
     display: flex;
     justify-content: space-between;
-    /* margin-top: 15px; */
 }
 
 .emailtxtBody {
@@ -606,11 +577,6 @@ i.fas:focus {
     .listFilter {
         padding: 5px;
     }
-    /* .email-list {
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-    } */
     .email-nav {
         width: 100%;
         justify-content: flex-end;
