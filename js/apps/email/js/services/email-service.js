@@ -48,6 +48,8 @@ function getEmailById(emailId) {
 function getRemoveOrAdd(currEmail, removeOrAdd) {
     let removeFrom;
     let addTo;
+    console.log(removeOrAdd);
+    debugger
     if (removeOrAdd === 'removed') {
         currEmail.isTrash = true;
         removeFrom = gEmail;
@@ -58,6 +60,9 @@ function getRemoveOrAdd(currEmail, removeOrAdd) {
         addTo = gEmail
     }
     let idx = removeFrom.findIndex(email => email.id === currEmail.id);
+    console.log(idx);
+    console.log(removeFrom);
+
     if (idx !== -1) removeFrom.splice(idx, 1)
     addTo.unshift(currEmail)
 

@@ -69,7 +69,7 @@ export default {
             this.emailChange = removeOrAdd;
             console.log(removeOrAdd);
             this.currEmail = this.email;
-            emailService.getRemoveOrAdd(this.currEmail, removeOrAdd)
+            emailService.getRemoveOrAdd(this.currEmail, this.emailChange)
                 .then(() => {
                     const msg = {
                         txt: `Email ${this.emailChange} Succefully`,

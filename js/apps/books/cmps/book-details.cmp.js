@@ -24,7 +24,7 @@ export default {
             <div>Language : {{book.language}}</div>
             <div v-bind:class="bookDetailsClass">Price: {{book.listPrice.amount}} {{book.listPrice.currencyCode}}</div>
             <long-text v-if="readMore" :txt="book.description"></long-text>
-            <router-link class="nextBook" :to="'/bookApp/details/' + nextBookId">NEXT BOOK &gt; </router-link>
+            <router-link class="nextBook" :to="'/book-app/bookApp/details/' + nextBookId">NEXT BOOK &gt; </router-link>
         </div>
 </div>
                     

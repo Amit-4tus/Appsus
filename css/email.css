@@ -1,3 +1,8 @@
+.email-main-container {
+    display: flex;
+    flex-direction: row;
+}
+
 li {
     list-style: none;
 }
@@ -10,11 +15,13 @@ a {
 .email {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    align-content: center;
     justify-content: space-between;
     border: 0.5px solid rgb(190, 190, 190);
     border-top: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 10px;
 }
 
 ul.email:first-child {
@@ -30,14 +37,14 @@ ul.email:first-child {
     border: 0.5px solid rgb(161, 159, 159);
     border-bottom: none;
     padding: 10px;
-    padding-top: 0;
+    padding-top: 10px;
     /* max-width: 80%; */
     /* height: 100vh; */
 }
 
 .unreadStyle {
     font-weight: bold;
-    background-color: rgb(224, 221, 221);
+    background-color: rgba(229, 238, 238, 0.8);
 }
 
 
@@ -72,11 +79,13 @@ ul.email:first-child {
     border-radius: 20px;
     font-size: 22px;
     padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid rgb(216, 215, 215);
     background-color: white;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
     outline: none;
+    margin-left: 28px;
 }
 
 .compose:hover {
@@ -94,9 +103,13 @@ ul.email:first-child {
 }
 
 .iconLinks {
-    color: #202124;
+    color: #5f6368;
     padding-left: 10px;
     margin-top: 12px;
+}
+
+.iconLinks:focus {
+    color: brown !important;
 }
 
 .sendEmailBtn {
@@ -172,7 +185,7 @@ ul.email:first-child {
 }
 
 .email-title {
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -193,22 +206,26 @@ ul.email:first-child {
     align-items: center;
     /* margin-left: 41px;
     margin-top: 10px; */
-    background-color: rgb(228, 225, 225);
+    background-color: rgba(242, 245, 245, 0.8);
     height: 50px;
     padding: 0 40px;
 }
 
 .search {
     height: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     outline: none;
     background-color: rgb(224, 224, 224);
+    /* background: #f1f3f4; */
+    border: 1px solid transparent;
+    max-width: 200px;
+    position: relative;
+    margin-right: 5px;
 }
 
 .emailSubject {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
 }
 
 
@@ -223,18 +240,50 @@ ul.email:first-child {
     align-items: flex-start;
     align-content: center;
     height: 75vh;
-    padding: 50px;
+    padding: 50px 0;
+    margin-right: 0;
     font-size: 20px;
-    width: 80%;
+    background-color: rgba(242, 245, 245, 0.8);
+    /* width: 80%; */
     /* margin-top: 35px; */
 }
 
 .saidLinks {
-    width: 100%;
+    width: 92%;
     /* background-color: green; */
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     height: 45px;
+    color: #5f6368;
+    padding-left: 20px;
+}
+
+.saidLinks:hover {
+    color: gray;
+}
+
+.emailFull {
+    margin: 50px 20px;
+    border: none;
+}
+
+.emailFullSubject {
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.emailFull-Name {
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.emailFullText {
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.fa-trash-alt {
+    margin: 0 auto;
 }
 
 .fa-envelope-open-text {
@@ -246,28 +295,36 @@ ul.email:first-child {
     background-color: #d5d6d6;
 }
 
-.saidLinks:active {
-    background-color: rgba(226, 126, 126, 0.5);
+.saidLinks:focus {
+    background-color: rgba(226, 126, 126, 0.3);
+    color: #d93025;
+}
+
+i.fas:focus {
+    background-color: rgba(226, 126, 126, 0.3);
+    color: #d93025;
 }
 
 .router-email {
     width: 75%;
     padding: 0 auto;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     /* padding: 100px; */
 }
 
 .statusRead {
-    width: 100px;
+    width: 130px;
     border: 2px black solid;
-    margin: 0 10px auto;
+    margin: 0 20px auto;
+    margin-top: 20px;
     background-color: rgb(199, 195, 195);
     /* margin-bottom: 100px; */
 }
 
 .statusRead div {
-    height: 13px;
+    height: 20px;
     padding: 2px;
-    font-size: 13px;
+    font-size: 15px;
     border-right: none;
     background-color: rgb(216, 195, 8);
 }

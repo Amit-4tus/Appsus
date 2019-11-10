@@ -4,11 +4,11 @@ import { emailService } from '../services/email-service.js'
 
 export default {
     template: `
-    <section>
+    <section class="emailFull">
         <ul  v-if="email" class="email-body" >
-            <li class="emailSubject"> {{email.subject}}  </li>
-            <li class="emailName"><pre> {{email.name}}      <{{email.email}}></pre></li>
-            <li v-if="email" class="emailSubject">{{email.text}}</li>
+            <li class="emailFullSubject"> {{email.subject}}  </li>
+            <li class="emailFull-Name"><pre>{{email.name}}  <{{email.email}}></pre></li>
+            <li v-if="email" class="emailFullText">{{email.text}}</li>
         </ul>
         <div>
             <i  @click="deleteOrAddEmail('remove')" class="fas fa-trash-alt">
