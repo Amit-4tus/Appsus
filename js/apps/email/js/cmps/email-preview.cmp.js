@@ -69,10 +69,10 @@ export default {
             eventBus.$emit('email', this.emailId);
         },
         deleteOrAddEmail(removeOrAdd) {
-            this.emailChange = removeOrAdd;
-            console.log(removeOrAdd);
-            this.currEmail = this.email;
-            emailService.getRemoveOrAdd(this.currEmail, this.emailChange)
+            // this.emailChange = removeOrAdd;
+            // console.log(removeOrAdd);
+            // this.currEmail = this.email;
+            emailService.getRemoveOrAdd(this.email, removeOrAdd)
                 .then(() => {
                     const msg = {
                         txt: `Email ${this.emailChange} Succefully`,
