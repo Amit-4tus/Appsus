@@ -13,7 +13,7 @@ export default {
                   <li class="emailName"> {{email.name}}</li>
                   <li class="emailSubject"> 
                        <span class="email-title">{{email.subject}} 
-                       </span>  - {{email.text.substring(0,25)+"..."}}</li>
+                       </span>  - {{email.text.substring(0,15)+"..."}}</li>
                    <li class="emailSentAt">  {{getCurrTime(email.sentAt)}}
                        <span @click.stop="changeStarred(email)">
                             <i v-if="email.isStarred" class="fas fa-star starfill"></i>
@@ -46,7 +46,7 @@ export default {
                       </span>
                     </li>
                     <li class="emailName"> {{email.name}}       <{{email.email}}></li>
-                    <li class="emailSubject">{{email.text}}</li>
+                    <li class="emailtxtBody">{{email.text}}</li>
              </ul>
        </section>
      `,
@@ -107,7 +107,7 @@ export default {
         getCurrTime(sentAt) {
             let tempTime = new Date(sentAt) + '';
             let date = tempTime.substring(3, 10)
-            return tempTime.substring(16, 21) + date
+            return tempTime.substring(16, 21)
         },
         sendToKeep() {
             const email = {
@@ -121,6 +121,7 @@ export default {
     },
     created() {
         this.currEmail = this.email;
+        this.$emit('filtered', this.filterBy)
 
     },
     computed: {

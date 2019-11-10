@@ -19,7 +19,7 @@ export default {
            
            <div>{{unreadEmails}} <i class="fas fa-envelope-open-text"></i></div>
        </section>
-       <email-list :emailsForShow="emailsToShow"></email-list>
+       <email-list :deleteEmail="deleteEmail" :emailsForShow="emailsToShow"></email-list>
    </div>
     `,
     data() {
@@ -46,6 +46,26 @@ export default {
         setFilter(filterBy) {
             this.filterBy = filterBy
         },
+        //     deleteOrAddEmail(removeOrAdd) {
+        //         this.emailChange = removeOrAdd;
+        //         console.log(removeOrAdd);
+        //         this.currEmail = this.email;
+        //         emailService.getRemoveOrAdd(this.currEmail, this.emailChange)
+        //             .then(() => {
+        //                 const msg = {
+        //                     txt: `Email ${this.emailChange} Succefully`,
+        //                     type: 'success'
+        //                 }
+        //                 eventBus.$emit('show-msg', msg);
+        //             })
+        //             .catch(err => {
+        //                 const msg = {
+        //                     txt: `NOT Saved (${err})`,
+        //                     type: 'error'
+        //                 }
+        //                 eventBus.$emit('show-msg', msg);
+        //             })
+        //     },
     },
     computed: {
         emailsToShow() {

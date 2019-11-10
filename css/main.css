@@ -1,33 +1,61 @@
-@import "helpers.css";
-@import "keep.css";
-body {
-    margin: 0 auto;
-}
-
-img.d-block {
-    height: 550px;
-}
-
-body {
-    max-width: 100%;
-}
-
-.header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(209, 209, 106);
-    border-bottom: 2px black solid;
-    height: 15vh;
-}
-
-.container-fluid {
-    margin: 0 !important;
-    padding: 100% !important;
-}
-
-.user-msg {
-    background-color: rgb(58, 240, 58);
-    padding: 5px;
-}
+    @import "helpers.css";
+    @import "keep.css";
+    @font-face {
+        font-family: 'Alfa Slab One', cursive;
+        src: url('../fonts/AlfaSlabOne-Regular')
+    }
+    
+    body {
+        margin: 0 auto;
+    }
+    
+    .logo {
+        margin-left: 20px;
+        font-weight: bolder;
+        font-family: 'Alfa Slab One', cursive;
+    }
+    
+    img.d-block {
+        height: 550px;
+    }
+    
+    body {
+        max-width: 100%;
+    }
+    
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #59719b;
+        border-bottom: none;
+        height: 15vh;
+    }
+    
+    .header nav {
+        font-weight: bold;
+        margin: 0;
+        margin-right: 10px;
+        color: white;
+    }
+    
+    .header a {
+        margin: 0;
+        margin-left: 5px;
+        font-size: 20px;
+    }
+    
+    .header a:focus {
+        color: chartreuse;
+    }
+    
+    .container-fluid {
+        margin: 0 !important;
+        padding: 100% !important;
+    }
+    
+    .user-msg {
+        background-color: rgb(25, 153, 25);
+        padding: 5px;
+    }
